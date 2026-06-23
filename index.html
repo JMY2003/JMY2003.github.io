@@ -3,35 +3,26 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>姜明烨 - 简历</title>
+    <title>姜明烨简历</title>
     <meta name="description" content="姜明烨简历" />
-    <meta property="og:title" content="姜明烨 - 简历" />
-    <meta property="og:description" content="应用统计、LLM Agent、LLM算法" />
-    <meta property="og:image" content="assets/profile.jpg" />
     <link rel="icon" href="assets/profile.jpg" />
     <style>
       :root {
         color-scheme: light;
-        --ink: #151515;
-        --muted: #666b72;
-        --line: #e7e0d6;
-        --paper: #f8f6f1;
-        --white: #ffffff;
-        --green: #0f6f67;
-        --green-soft: #e1f1ee;
-        --rust: #b6533c;
-        --gold: #b8862b;
-        --shadow: 0 18px 42px rgba(21, 21, 21, 0.07);
-        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
-          "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+        --ink: #1b1b1b;
+        --muted: #64666b;
+        --line: #e8e2d8;
+        --paper: #f7f5ef;
+        --white: #fff;
+        --accent: #176f68;
+        --soft: #f0faf8;
+        --shadow: 0 14px 34px rgba(31, 28, 24, 0.07);
+        font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+          "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
       }
 
       * {
         box-sizing: border-box;
-      }
-
-      html {
-        scroll-behavior: smooth;
       }
 
       body {
@@ -42,472 +33,303 @@
         letter-spacing: 0;
       }
 
-      a {
-        color: inherit;
-        text-decoration: none;
-      }
-
-      img {
-        display: block;
-        max-width: 100%;
-      }
-
-      .site-header {
-        position: sticky;
-        top: 0;
-        z-index: 10;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 18px;
-        padding: 12px clamp(18px, 4vw, 54px);
-        border-bottom: 1px solid rgba(231, 224, 214, 0.86);
-        background: rgba(248, 246, 241, 0.9);
-        backdrop-filter: blur(16px);
-      }
-
-      .brand {
-        font-weight: 850;
-        font-size: 18px;
-      }
-
-      .nav {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: flex-end;
-        gap: 2px;
-      }
-
-      .nav a {
-        min-height: 34px;
-        padding: 6px 10px;
-        border-radius: 6px;
-        color: var(--muted);
-        font-size: 14px;
-      }
-
-      .nav a:hover {
-        color: var(--ink);
-        background: var(--white);
-      }
-
       .page {
-        width: min(1120px, calc(100% - 36px));
+        width: min(980px, calc(100% - 32px));
         margin: 0 auto;
-        padding: clamp(28px, 6vw, 64px) 0 56px;
+        padding: 32px 0 54px;
       }
 
-      .hero {
-        display: grid;
-        grid-template-columns: minmax(0, 1fr) 180px;
-        gap: clamp(22px, 5vw, 54px);
-        align-items: center;
-        margin-bottom: 22px;
-        padding: clamp(24px, 5vw, 44px);
+      .resume {
+        padding: clamp(24px, 4.5vw, 48px);
         border: 1px solid var(--line);
         border-radius: 10px;
         background: var(--white);
         box-shadow: var(--shadow);
       }
 
-      .hero h1 {
-        margin: 0 0 10px;
-        font-size: clamp(42px, 7vw, 78px);
+      .top {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 132px;
+        gap: 24px;
+        align-items: start;
+        padding-bottom: 24px;
+        border-bottom: 2px solid var(--accent);
+      }
+
+      h1 {
+        margin: 0 0 8px;
+        font-size: clamp(42px, 7vw, 68px);
         line-height: 1;
         font-weight: 900;
       }
 
-      .headline {
-        margin: 0 0 20px;
-        color: var(--green);
-        font-weight: 820;
-        font-size: clamp(17px, 2vw, 22px);
+      .summary {
+        margin: 0 0 16px;
+        color: var(--accent);
+        font-size: 18px;
+        font-weight: 800;
       }
 
-      .contact-grid {
+      .contact {
         display: grid;
         grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 8px 18px;
+        gap: 6px 18px;
         margin: 0;
         padding: 0;
         list-style: none;
-        color: #333;
+        color: #303030;
       }
 
-      .contact-grid li {
-        min-width: 0;
-      }
-
-      .portrait {
-        width: 180px;
+      .photo {
+        width: 132px;
         aspect-ratio: 3 / 4;
         overflow: hidden;
         border: 1px solid var(--line);
-        border-radius: 8px;
+        border-radius: 6px;
         background: #fff;
       }
 
-      .portrait img {
+      .photo img {
         width: 100%;
         height: 100%;
         object-fit: cover;
-        object-position: center 18%;
+        object-position: center 16%;
       }
 
-      .section {
-        margin-top: 18px;
-        padding: clamp(22px, 4vw, 34px);
-        border: 1px solid var(--line);
-        border-radius: 10px;
-        background: var(--white);
-        box-shadow: 0 8px 22px rgba(21, 21, 21, 0.045);
+      section {
+        padding-top: 28px;
       }
 
-      .section h2 {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        margin: 0 0 20px;
-        font-size: clamp(24px, 3vw, 34px);
-        line-height: 1.1;
-      }
-
-      .section h2::before {
-        content: "";
-        width: 7px;
-        height: 30px;
-        border-radius: 999px;
-        background: var(--green);
+      h2 {
+        margin: 0 0 14px;
+        padding-bottom: 8px;
+        border-bottom: 1px solid var(--line);
+        color: var(--accent);
+        font-size: 24px;
+        line-height: 1.2;
       }
 
       .entry {
         display: grid;
-        grid-template-columns: 168px minmax(0, 1fr);
-        gap: 20px;
-        padding: 18px 0;
-        border-top: 1px solid var(--line);
+        grid-template-columns: 150px minmax(0, 1fr);
+        gap: 18px;
+        padding: 16px 0;
+        border-bottom: 1px solid #f0ece5;
       }
 
-      .entry:first-of-type {
-        border-top: 0;
-        padding-top: 0;
+      .entry:last-child {
+        border-bottom: 0;
+        padding-bottom: 0;
       }
 
       .time {
-        color: var(--green);
+        color: var(--accent);
         font-size: 14px;
-        font-weight: 820;
+        font-weight: 800;
       }
 
-      .entry h3 {
+      h3 {
         margin: 0 0 8px;
-        font-size: 20px;
-        line-height: 1.34;
+        font-size: 19px;
+        line-height: 1.35;
       }
 
-      .line-list,
-      .award-list {
+      p {
+        margin: 0;
+      }
+
+      .lines {
         display: grid;
-        gap: 8px;
+        gap: 5px;
         margin: 0;
         padding: 0;
         list-style: none;
       }
 
-      .line-list li,
-      .award-list li {
-        color: #353535;
-      }
-
       .label {
         color: var(--muted);
-        font-weight: 780;
+        font-weight: 800;
       }
 
-      .project-text,
-      .work-text,
-      .skill-text {
-        margin: 0;
-        color: #353535;
-      }
-
-      .skill-grid {
+      .block {
         display: grid;
-        grid-template-columns: 140px minmax(0, 1fr);
-        gap: 10px 18px;
+        gap: 8px;
       }
 
-      .skill-name {
-        color: var(--green);
-        font-weight: 820;
+      .skill-list,
+      .award-list {
+        display: grid;
+        gap: 10px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .skill-list li {
+        display: grid;
+        grid-template-columns: 112px minmax(0, 1fr);
+        gap: 14px;
       }
 
       .award-list li {
-        padding: 13px 16px;
-        border-left: 4px solid var(--gold);
-        background: #fff8ea;
+        padding: 10px 12px;
+        border-left: 3px solid var(--accent);
+        background: var(--soft);
       }
 
-      .actions {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 12px;
-        margin-top: 20px;
-      }
-
-      .button {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        gap: 8px;
-        min-height: 42px;
-        padding: 9px 15px;
-        border: 1px solid var(--line);
-        border-radius: 6px;
-        background: var(--white);
-        color: var(--ink);
-        font-weight: 780;
-      }
-
-      .button.primary {
-        border-color: var(--green);
-        background: var(--green);
-        color: #fff;
-      }
-
-      .icon {
-        width: 17px;
-        height: 17px;
-        flex: 0 0 auto;
-      }
-
-      .footer {
-        width: min(1120px, calc(100% - 36px));
-        margin: 0 auto;
-        padding: 0 0 28px;
-        color: var(--muted);
-        font-size: 14px;
-      }
-
-      @media (max-width: 760px) {
-        .site-header {
-          align-items: flex-start;
-          flex-direction: column;
+      @media (max-width: 720px) {
+        .resume {
+          padding: 22px;
         }
 
-        .nav {
-          justify-content: flex-start;
-        }
-
-        .hero,
+        .top,
         .entry,
-        .skill-grid {
+        .skill-list li,
+        .contact {
           grid-template-columns: 1fr;
         }
 
-        .portrait {
-          width: 132px;
+        .photo {
+          width: 116px;
           order: -1;
         }
 
-        .contact-grid {
-          grid-template-columns: 1fr;
-        }
-
-        .section {
-          padding: 20px;
+        .entry {
+          gap: 6px;
         }
       }
     </style>
   </head>
   <body>
-    <header class="site-header">
-      <a class="brand" href="#top">姜明烨</a>
-      <nav class="nav" aria-label="主导航">
-        <a href="#education">教育经历</a>
-        <a href="#projects">项目经历</a>
-        <a href="#experience">工作经历</a>
-        <a href="#skills">技能</a>
-        <a href="#awards">获奖记录</a>
-      </nav>
-    </header>
+    <main class="page">
+      <article class="resume">
+        <header class="top">
+          <div>
+            <h1>姜明烨</h1>
+            <p class="summary">硕士&双学士学位 LLM Agent & LLM算法</p>
+            <ul class="contact">
+              <li>男</li>
+              <li>在校生</li>
+              <li>共青团员</li>
+              <li>现居广州</li>
+              <li>(+86)15773982990</li>
+              <li>mingyejiang@foxmail.com</li>
+            </ul>
+          </div>
+          <div class="photo">
+            <img src="assets/profile.jpg" alt="姜明烨照片" />
+          </div>
+        </header>
 
-    <main class="page" id="top">
-      <section class="hero">
-        <div>
-          <h1>姜明烨</h1>
-          <p class="headline">硕士&双学士学位 LLM Agent & LLM算法</p>
-          <ul class="contact-grid">
-            <li><span class="label">性别：</span>男</li>
-            <li><span class="label">身份：</span>在校生</li>
-            <li><span class="label">政治面貌：</span>共青团员</li>
-            <li><span class="label">现居：</span>广州</li>
-            <li><span class="label">电话：</span>(+86)15773982990</li>
-            <li><span class="label">邮箱：</span>mingyejiang@foxmail.com</li>
+        <section>
+          <h2>教育经历</h2>
+          <article class="entry">
+            <div class="time">2025/09 - 2027/06</div>
+            <div>
+              <h3>中山大学 硕士 - 应用统计</h3>
+              <ul class="lines">
+                <li><span class="label">学院：</span>数学学院</li>
+                <li><span class="label">专业：</span>应用统计</li>
+                <li><span class="label">专业方向：</span>深度学习，大语言模型</li>
+                <li><span class="label">相关课程：</span>人工智能算法选讲；机器学习与数据挖掘；数据分析高级编程；统计推断；回归分析，算法设计...</li>
+              </ul>
+            </div>
+          </article>
+          <article class="entry">
+            <div class="time">2021/09 - 2025/06</div>
+            <div>
+              <h3>华南理工大学 本科 - 数学与应用数学&自动化双学位</h3>
+              <ul class="lines">
+                <li><span class="label">学院：</span>数学学院</li>
+                <li><span class="label">专业：</span>数学与应用数学（主修）；自动化（辅修）</li>
+                <li><span class="label">毕设方向：</span>分布式优化</li>
+                <li><span class="label">相关课程：</span>数学分析；高等代数；概率论；数理统计；C++语言与程序设计；数据结构与算法；模电；数电；数学建模；自控原理；人工智能；微型计算机系统与应用...</li>
+              </ul>
+            </div>
+          </article>
+        </section>
+
+        <section>
+          <h2>项目经历</h2>
+          <article class="entry">
+            <div class="time">2026/05 - 至今</div>
+            <div class="block">
+              <h3>Golden Template 网络配置智能校验运维系统 方向：LLM Agent</h3>
+              <p>Golden Template 是华为面向网络配置智能校验与运维场景打造的平台，旨在通过规则化、自动化的方式提升网络配置检查效率与运维质量。本人为系统设计并打造了 Nora 智能助手（Network Orchestration & Rules Agent）。Nora 基于自然语言理解能力，能够将用户的运维诉求自动解析为结构化规则，支持规则的生成、修改、保存、管理与调用，并可联动系统内既有资源完成配置校验任务。该助手显著降低了网络工程师编写校验规则、执行配置检查和维护规则资产的复杂度，提升了平台的易用性与自动化水平。</p>
+            </div>
+          </article>
+          <article class="entry">
+            <div class="time">2026/03 - 2026/05</div>
+            <div class="block">
+              <h3>基于Agentic RAG的网络配置翻译与生成系统 方向：LLM Agent</h3>
+              <p>作为团队核心成员，为配置翻译与生成场景打造了一套超高准确度的agentic RAG工具，用于华为与思科设备等配置命令手册检索与生成，实测检索准确率超过98%，远高于传统基于embedding的检索（准确度低于90%，完全无法处理相似的命令），目前该系统硬件在Cisco to huawei配置文件翻译，路由网络配置文件生成，故障注入，网络世界模型等项目中上线应用。</p>
+            </div>
+          </article>
+          <article class="entry">
+            <div class="time">2026/03 - 2026/04</div>
+            <div class="block">
+              <h3>基于multi-agent的竞品对比分析系统 方向：LLM Agent</h3>
+              <p>本人设计并实现了一个面向通用市场情报研究的多 Agent 竞品分析平台，支持用户输入品类与分析目标后，自动完成任务理解、竞品发现、信息源规划、网页搜索与抓取、结构化信息抽取、证据链构建、多维竞品分析、质量审查和报告生成。支持DAG 可视化、证据库、报告编辑与导出。实现了一个可追溯、可复核、可导出的自动化竞品分析与对比流程。</p>
+            </div>
+          </article>
+          <article class="entry">
+            <div class="time">2024/10-2025/6</div>
+            <div class="block">
+              <h3>事件触发通信下的分布式优化研究 方向：优化理论</h3>
+              <p>重点研究了分布式梯度跟踪方法。针对无向连通网络下的DIGing算法，我提出了一种改进型事件触发机制，得到了一种新的基于事件触发通信的DIGing算法。此算法在强凸目标函数的条件下能够收敛到全局最优解，在理论上避免了既有触发机制参数选择困难等问题，具有参数选择简单易行的优点，且在一定程度上降低了通信负担。 针对有向强连通网络下的场景，我将上述事件触发机制拓展应用到了Push-DIGing算法，设计了一种全新的基于事件触发通信的Push-DIGing算法。此算法在强凸目标函数的条件下能够收敛到全局最优解，且相较于原始的Push-DIGing算法显著降低了通信率。最终我的研究成果获得了华南理工大学优秀毕业论文。</p>
+            </div>
+          </article>
+        </section>
+
+        <section>
+          <h2>工作经历</h2>
+          <article class="entry">
+            <div class="time">2026/03 - 至今</div>
+            <div class="block">
+              <h3>华为技术有限公司 职位：AI工程师（agent方向）</h3>
+              <p><span class="label">公司介绍：</span>华为ict bg, 网络孪生仿真实验室，lab主要研究方向为通信网络agent。</p>
+              <p><span class="label">工作内容：</span>主要工作内容为研究LLM技术在通信网络中的工程应用，包括但不限于配置翻译，配置生成，智能校验与运维，网络世界模型等领域，目前本人打造的多套LLM Agent已投入使用，效果良好，大大降低了一线网络工程师的工作负荷，提升了工作效率。</p>
+            </div>
+          </article>
+          <article class="entry">
+            <div class="time">2025/11 - 2026/01</div>
+            <div class="block">
+              <h3>广州智用人工智能研究院 职位：LLM应用工程师</h3>
+              <p><span class="label">公司介绍：</span>公司主营业务为to B的LLM agent。</p>
+              <p><span class="label">工作内容：</span>主要工作内容是为agent项目提供技术方案；使用python语言编写demo验证方案可行性；商用agent开发。工作期间自主完成了基于vl模型的表格内容提取agent和图片翻译agent（any to Chinese），印式英语/中文的tts/stt agent等多个项目。</p>
+            </div>
+          </article>
+          <article class="entry">
+            <div class="time">2024/11 - 2025/03</div>
+            <div class="block">
+              <h3>上海泰雷兹智能卡技术有限公司 职位：RPA工程师</h3>
+              <p><span class="label">公司介绍：</span>法国THALES集团的中国分公司，负责智能卡业务。</p>
+              <p><span class="label">工作内容：</span>主要工作为机器人流程自动化（RPA）开发，工作期间我协调了相关部门的需求，为公司设计了四套RPA程序，并对应修改和优化了数据库的业务逻辑，用于Oracle系统的自动查找数据，填写和下载WorkOrder，BOM Routing等任务。避免了大量重复性人工操作也降低了人工操作可能产生的错误，提升了公司的生产管理效率。</p>
+            </div>
+          </article>
+        </section>
+
+        <section>
+          <h2>技能</h2>
+          <ul class="skill-list">
+            <li><span class="label">专业知识：</span><span>掌握数学（优化理论，微积分，代数），统计（概率论与数理统计，回归分析，统计推断），计算机（数据结构与算法，计网，微机原理）相关基础知识</span></li>
+            <li><span class="label">专业技能：</span><span>精通深度学习，llm与agent理论知识，熟悉基于transformer的GPT，BERT，DeepSeek等模型原理及ReAct，workflow，harness等agent基础知识，熟悉Linux基本操作，熟悉conda，ssh，git等环境管理</span></li>
+            <li><span class="label">编程语言：</span><span>擅长Python语言，熟练使用langchain，pytorch，numpy等库进行编程，具有良好的编程习惯，有模型训练，微调经验，agent开发实践经验；熟悉数据库系统，熟练使用SQL语言进行数据库管理；熟悉C++语言</span></li>
+            <li><span class="label">英语:</span><span>IELTS ACADEMIC：7.0分；CET 6：582分</span></li>
           </ul>
-          <div class="actions">
-            <a class="button primary" href="assets/resume.pdf" download>
-              <i data-lucide="download" class="icon" aria-hidden="true"></i>
-              下载简历PDF
-            </a>
-            <a class="button" href="mailto:mingyejiang@foxmail.com">
-              <i data-lucide="mail" class="icon" aria-hidden="true"></i>
-              邮件联系
-            </a>
-          </div>
-        </div>
-        <figure class="portrait" aria-label="姜明烨照片">
-          <img src="assets/profile.jpg" alt="姜明烨" />
-        </figure>
-      </section>
+        </section>
 
-      <section class="section" id="education">
-        <h2>教育经历</h2>
-        <article class="entry">
-          <div class="time">2025/09 - 2027/06</div>
-          <div>
-            <h3>中山大学 · 硕士 - 应用统计</h3>
-            <ul class="line-list">
-              <li><span class="label">学院：</span>数学学院</li>
-              <li><span class="label">专业：</span>应用统计</li>
-              <li><span class="label">专业方向：</span>深度学习，大语言模型</li>
-              <li>
-                <span class="label">相关课程：</span>人工智能算法选讲；机器学习与数据挖掘；数据分析高级编程；统计推断；回归分析，算法设计...
-              </li>
-            </ul>
-          </div>
-        </article>
-        <article class="entry">
-          <div class="time">2021/09 - 2025/06</div>
-          <div>
-            <h3>华南理工大学 · 本科 - 数学与应用数学&自动化双学位</h3>
-            <ul class="line-list">
-              <li><span class="label">学院：</span>数学学院</li>
-              <li><span class="label">专业：</span>数学与应用数学（主修）；自动化（辅修）</li>
-              <li><span class="label">毕设方向：</span>分布式优化</li>
-              <li>
-                <span class="label">相关课程：</span>数学分析；高等代数；概率论；数理统计；C++语言与程序设计；数据结构与算法；模电；数电；数学建模；自控原理；人工智能；微型计算机系统与应用...
-              </li>
-            </ul>
-          </div>
-        </article>
-      </section>
-
-      <section class="section" id="projects">
-        <h2>项目经历</h2>
-        <article class="entry">
-          <div class="time">2026/05 - 至今</div>
-          <div>
-            <h3>Golden Template 网络配置智能校验运维系统 · 方向：LLM Agent</h3>
-            <p class="project-text">
-              Golden Template 是华为面向网络配置智能校验与运维场景打造的平台，旨在通过规则化、自动化的方式提升网络配置检查效率与运维质量。本人为系统设计并打造了 Nora 智能助手（Network Orchestration & Rules Agent）。Nora 基于自然语言理解能力，能够将用户的运维诉求自动解析为结构化规则，支持规则的生成、修改、保存、管理与调用，并可联动系统内既有资源完成配置校验任务。该助手显著降低了网络工程师编写校验规则、执行配置检查和维护规则资产的复杂度，提升了平台的易用性与自动化水平。
-            </p>
-          </div>
-        </article>
-        <article class="entry">
-          <div class="time">2026/03 - 2026/05</div>
-          <div>
-            <h3>基于Agentic RAG的网络配置翻译与生成系统 · 方向：LLM Agent</h3>
-            <p class="project-text">
-              作为团队核心成员，为配置翻译与生成场景打造了一套超高准确度的agentic RAG工具，用于华为与思科设备等配置命令手册检索与生成，实测检索准确率超过98%，远高于传统基于embedding的检索（准确度低于90%，完全无法处理相似的命令），目前该系统硬件在Cisco to huawei配置文件翻译，路由网络配置文件生成，故障注入，网络世界模型等项目中上线应用。
-            </p>
-          </div>
-        </article>
-        <article class="entry">
-          <div class="time">2026/03 - 2026/04</div>
-          <div>
-            <h3>基于multi-agent的竞品对比分析系统 · 方向：LLM Agent</h3>
-            <p class="project-text">
-              本人设计并实现了一个面向通用市场情报研究的多 Agent 竞品分析平台，支持用户输入品类与分析目标后，自动完成任务理解、竞品发现、信息源规划、网页搜索与抓取、结构化信息抽取、证据链构建、多维竞品分析、质量审查和报告生成。支持DAG 可视化、证据库、报告编辑与导出。实现了一个可追溯、可复核、可导出的自动化竞品分析与对比流程。
-            </p>
-          </div>
-        </article>
-        <article class="entry">
-          <div class="time">2024/10-2025/6</div>
-          <div>
-            <h3>事件触发通信下的分布式优化研究 · 方向：优化理论</h3>
-            <p class="project-text">
-              重点研究了分布式梯度跟踪方法。针对无向连通网络下的DIGing算法，我提出了一种改进型事件触发机制，得到了一种新的基于事件触发通信的DIGing算法。此算法在强凸目标函数的条件下能够收敛到全局最优解，在理论上避免了既有触发机制参数选择困难等问题，具有参数选择简单易行的优点，且在一定程度上降低了通信负担。 针对有向强连通网络下的场景，我将上述事件触发机制拓展应用到了Push-DIGing算法，设计了一种全新的基于事件触发通信的Push-DIGing算法。此算法在强凸目标函数的条件下能够收敛到全局最优解，且相较于原始的Push-DIGing算法显著降低了通信率。最终我的研究成果获得了华南理工大学优秀毕业论文。
-            </p>
-          </div>
-        </article>
-      </section>
-
-      <section class="section" id="experience">
-        <h2>工作经历</h2>
-        <article class="entry">
-          <div class="time">2026/03 - 至今</div>
-          <div>
-            <h3>华为技术有限公司 · 职位：AI工程师（agent方向）</h3>
-            <p class="work-text">
-              <span class="label">公司介绍：</span>华为ict bg, 网络孪生仿真实验室，lab主要研究方向为通信网络agent。
-            </p>
-            <p class="work-text">
-              <span class="label">工作内容：</span>主要工作内容为研究LLM技术在通信网络中的工程应用，包括但不限于配置翻译，配置生成，智能校验与运维，网络世界模型等领域，目前本人打造的多套LLM Agent已投入使用，效果良好，大大降低了一线网络工程师的工作负荷，提升了工作效率。
-            </p>
-          </div>
-        </article>
-        <article class="entry">
-          <div class="time">2025/11 - 2026/01</div>
-          <div>
-            <h3>广州智用人工智能研究院 · 职位：LLM应用工程师</h3>
-            <p class="work-text">
-              <span class="label">公司介绍：</span>公司主营业务为to B的LLM agent。
-            </p>
-            <p class="work-text">
-              <span class="label">工作内容：</span>主要工作内容是为agent项目提供技术方案；使用python语言编写demo验证方案可行性；商用agent开发。工作期间自主完成了基于vl模型的表格内容提取agent和图片翻译agent（any to Chinese），印式英语/中文的tts/stt agent等多个项目。
-            </p>
-          </div>
-        </article>
-        <article class="entry">
-          <div class="time">2024/11 - 2025/03</div>
-          <div>
-            <h3>上海泰雷兹智能卡技术有限公司 · 职位：RPA工程师</h3>
-            <p class="work-text">
-              <span class="label">公司介绍：</span>法国THALES集团的中国分公司，负责智能卡业务。
-            </p>
-            <p class="work-text">
-              <span class="label">工作内容：</span>主要工作为机器人流程自动化（RPA）开发，工作期间我协调了相关部门的需求，为公司设计了四套RPA程序，并对应修改和优化了数据库的业务逻辑，用于Oracle系统的自动查找数据，填写和下载WorkOrder，BOM Routing等任务。避免了大量重复性人工操作也降低了人工操作可能产生的错误，提升了公司的生产管理效率。
-            </p>
-          </div>
-        </article>
-      </section>
-
-      <section class="section" id="skills">
-        <h2>技能</h2>
-        <div class="skill-grid">
-          <div class="skill-name">专业知识</div>
-          <p class="skill-text">
-            掌握数学（优化理论，微积分，代数），统计（概率论与数理统计，回归分析，统计推断），计算机（数据结构与算法，计网，微机原理）相关基础知识
-          </p>
-          <div class="skill-name">专业技能</div>
-          <p class="skill-text">
-            精通深度学习，llm与agent理论知识，熟悉基于transformer的GPT，BERT，DeepSeek等模型原理及ReAct，workflow，harness等agent基础知识，熟悉Linux基本操作，熟悉conda，ssh，git等环境管理
-          </p>
-          <div class="skill-name">编程语言</div>
-          <p class="skill-text">
-            擅长Python语言，熟练使用langchain，pytorch，numpy等库进行编程，具有良好的编程习惯，有模型训练，微调经验，agent开发实践经验；熟悉数据库系统，熟练使用SQL语言进行数据库管理；熟悉C++语言
-          </p>
-          <div class="skill-name">英语</div>
-          <p class="skill-text">IELTS ACADEMIC：7.0分；CET 6：582分</p>
-        </div>
-      </section>
-
-      <section class="section" id="awards">
-        <h2>获奖记录</h2>
-        <ul class="award-list">
-          <li>2024 MCM（美国大学生数学建模竞赛）: Finalist (全球前2%)</li>
-          <li>2025 华南理工大学校级优秀毕业论文（全校1%）</li>
-          <li>2025 华南理工大学“遇见小面创新奖学金”学生科技创新竞赛奖学金 一等奖（全校1%）</li>
-          <li>2023 广州高校数学建模联赛：一等奖（第一名）</li>
-          <li>其他数学建模，奖学金，优干等奖项若干</li>
-        </ul>
-      </section>
+        <section>
+          <h2>获奖记录</h2>
+          <ul class="award-list">
+            <li>2024 MCM（美国大学生数学建模竞赛）: Finalist (全球前2%)</li>
+            <li>2025 华南理工大学校级优秀毕业论文（全校1%）</li>
+            <li>2025 华南理工大学“遇见小面创新奖学金”学生科技创新竞赛奖学金 一等奖（全校1%）</li>
+            <li>2023 广州高校数学建模联赛：一等奖（第一名）</li>
+            <li>其他数学建模，奖学金，优干等奖项若干</li>
+          </ul>
+        </section>
+      </article>
     </main>
-
-    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
-    <script>
-      window.lucide?.createIcons();
-    </script>
   </body>
 </html>
