@@ -307,6 +307,41 @@
         font-weight: 850;
       }
 
+      .education-heading {
+        display: grid;
+        gap: 8px;
+        margin-bottom: 12px;
+      }
+
+      .education-school {
+        margin: 0;
+      }
+
+      .education-meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .education-pill {
+        display: inline-flex;
+        align-items: center;
+        min-height: 28px;
+        padding: 4px 10px;
+        border: 1px solid rgba(49, 100, 244, 0.18);
+        border-radius: 999px;
+        background: #eef4ff;
+        color: var(--blue);
+        font-size: 13px;
+        font-weight: 850;
+      }
+
+      .education-pill:nth-child(2) {
+        border-color: rgba(20, 168, 111, 0.2);
+        background: #eefbf5;
+        color: var(--green);
+      }
+
       .lines {
         display: grid;
         gap: 6px;
@@ -454,7 +489,9 @@
               entries: [
                 {
                   time: "2025/09 - 2027/06",
-                  title: "中山大学 硕士 - 应用统计",
+                  school: "中山大学",
+                  degree: "硕士",
+                  major: "应用统计",
                   lines: [
                     ["学院：", "数学学院"],
                     ["专业：", "应用统计"],
@@ -464,7 +501,9 @@
                 },
                 {
                   time: "2021/09 - 2025/06",
-                  title: "华南理工大学 本科 - 数学与应用数学&自动化双学位",
+                  school: "华南理工大学",
+                  degree: "本科",
+                  major: "数学与应用数学&自动化双学位",
                   lines: [
                     ["学院：", "数学学院"],
                     ["专业：", "数学与应用数学（主修）；自动化（辅修）"],
@@ -580,7 +619,9 @@
               entries: [
                 {
                   time: "2025/09 - 2027/06",
-                  title: "Sun Yat-sen University, M.S. in Applied Statistics",
+                  school: "Sun Yat-sen University",
+                  degree: "M.S.",
+                  major: "Applied Statistics",
                   lines: [
                     ["School: ", "School of Mathematics"],
                     ["Major: ", "Applied Statistics"],
@@ -590,7 +631,9 @@
                 },
                 {
                   time: "2021/09 - 2025/06",
-                  title: "South China University of Technology, B.S. in Mathematics and Applied Mathematics & B.Eng. in Automation",
+                  school: "South China University of Technology",
+                  degree: "B.S. & B.Eng.",
+                  major: "Mathematics and Applied Mathematics & Automation",
                   lines: [
                     ["School: ", "School of Mathematics"],
                     ["Major: ", "Mathematics and Applied Mathematics (major); Automation (minor)"],
@@ -702,9 +745,21 @@
 
       function renderEntry(entry) {
         const content = el("div");
-        const head = el("div", { className: "panel-head" }, [el("h3", { text: entry.title })]);
-        if (entry.side) head.appendChild(el("span", { className: "side-note", text: entry.side }));
-        content.appendChild(head);
+        if (entry.school) {
+          content.appendChild(
+            el("div", { className: "education-heading" }, [
+              el("h3", { className: "education-school", text: entry.school }),
+              el("div", { className: "education-meta" }, [
+                el("span", { className: "education-pill", text: entry.degree }),
+                el("span", { className: "education-pill", text: entry.major }),
+              ]),
+            ])
+          );
+        } else {
+          const head = el("div", { className: "panel-head" }, [el("h3", { text: entry.title })]);
+          if (entry.side) head.appendChild(el("span", { className: "side-note", text: entry.side }));
+          content.appendChild(head);
+        }
 
         if (entry.lines) {
           const list = el("ul", { className: "lines" });
