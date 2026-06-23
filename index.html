@@ -19,7 +19,6 @@
         --green: #14a86f;
         --pink: #d946ef;
         --amber: #f59e0b;
-        --violet: #7657ff;
         --shadow: 0 18px 48px rgba(34, 56, 110, 0.12);
         font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
           "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
@@ -46,10 +45,29 @@
         text-decoration: none;
       }
 
+      .language-toggle {
+        position: fixed;
+        top: 14px;
+        left: 14px;
+        z-index: 20;
+        min-height: 38px;
+        padding: 8px 12px;
+        border: 1px solid rgba(49, 100, 244, 0.24);
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.92);
+        color: var(--blue);
+        cursor: pointer;
+        font: inherit;
+        font-size: 14px;
+        font-weight: 850;
+        box-shadow: 0 10px 24px rgba(34, 56, 110, 0.12);
+        backdrop-filter: blur(14px);
+      }
+
       .page {
         width: min(1040px, calc(100% - 32px));
         margin: 0 auto;
-        padding: 34px 0 58px;
+        padding: 54px 0 58px;
       }
 
       .resume {
@@ -153,10 +171,6 @@
         object-position: center 16%;
       }
 
-      section {
-        padding-top: 30px;
-      }
-
       h2 {
         display: flex;
         align-items: center;
@@ -186,6 +200,7 @@
       }
 
       .tab-shell {
+        margin-top: 30px;
         border: 1px solid rgba(217, 226, 239, 0.9);
         border-radius: 12px;
         background: #fff;
@@ -196,15 +211,15 @@
         display: flex;
         gap: 6px;
         overflow-x: auto;
-        padding: 8px 8px 0;
+        padding: 10px 10px 0;
         border-bottom: 1px solid var(--line);
         scrollbar-width: thin;
       }
 
       .tab-button {
         flex: 0 0 auto;
+        min-width: 128px;
         min-height: 46px;
-        max-width: 260px;
         padding: 8px 13px;
         border: 1px solid transparent;
         border-bottom: 0;
@@ -213,7 +228,7 @@
         color: #344054;
         cursor: pointer;
         font: inherit;
-        text-align: left;
+        text-align: center;
       }
 
       .tab-button:nth-child(2n) {
@@ -240,19 +255,11 @@
         display: block;
         overflow: hidden;
         max-width: 100%;
-        font-size: 14px;
+        font-size: 15px;
         font-weight: 850;
         line-height: 1.28;
         text-overflow: ellipsis;
         white-space: nowrap;
-      }
-
-      .tab-time {
-        display: block;
-        margin-top: 2px;
-        color: var(--muted);
-        font-size: 12px;
-        font-weight: 760;
       }
 
       .tab-panel {
@@ -277,23 +284,6 @@
         color: var(--pink);
         font-size: 14px;
         font-weight: 850;
-      }
-
-      .part-tabs {
-        margin-top: 30px;
-      }
-
-      .part-tabs > .tab-strip {
-        padding: 10px 10px 0;
-      }
-
-      .part-tabs > .tab-strip .tab-button {
-        min-width: 128px;
-        text-align: center;
-      }
-
-      .part-tabs > .tab-strip .tab-title {
-        font-size: 15px;
       }
 
       .entry-list {
@@ -346,7 +336,7 @@
 
       .skill-list li {
         display: grid;
-        grid-template-columns: 112px minmax(0, 1fr);
+        grid-template-columns: 128px minmax(0, 1fr);
         gap: 14px;
         padding: 12px 14px;
         border: 1px solid var(--line);
@@ -372,6 +362,10 @@
       }
 
       @media (max-width: 760px) {
+        .page {
+          padding-top: 74px;
+        }
+
         .resume {
           padding: 22px;
         }
@@ -397,10 +391,6 @@
           flex: 0 1 auto;
         }
 
-        .tab-button {
-          max-width: 220px;
-        }
-
         .tab-title {
           white-space: normal;
         }
@@ -418,192 +408,398 @@
     </style>
   </head>
   <body>
+    <button class="language-toggle" id="languageToggle" type="button">English</button>
     <main class="page">
       <article class="resume">
         <header class="top">
           <div>
-            <h1>姜明烨</h1>
-            <p class="summary">
-              <span>硕士&双学士学位</span>
-              <span>LLM Agent & LLM算法</span>
-            </p>
-            <ul class="contact">
-              <li>男</li>
-              <li>在校生</li>
-              <li>共青团员</li>
-              <li>现居广州</li>
-              <li>(+86)15773982990</li>
-              <li>mingyejiang@foxmail.com</li>
-            </ul>
+            <h1 id="name"></h1>
+            <p class="summary" id="summary"></p>
+            <ul class="contact" id="contact"></ul>
             <div class="actions">
-              <a class="button primary" href="mailto:mingyejiang@foxmail.com">邮件联系</a>
-              <a class="button secondary" href="assets/resume.pdf" download>下载PDF</a>
+              <a class="button primary" id="emailButton" href="mailto:mingyejiang@foxmail.com"></a>
+              <a class="button secondary" id="downloadButton" href="assets/resume.pdf" download></a>
             </div>
           </div>
           <div class="photo">
-            <img src="assets/profile.jpg" alt="姜明烨照片" />
+            <img src="assets/profile.jpg" alt="姜明烨照片" id="profilePhoto" />
           </div>
         </header>
 
-        <div class="tab-shell part-tabs" data-tabs>
-          <div class="tab-strip" role="tablist" aria-label="简历模块">
-            <button class="tab-button" type="button" role="tab" aria-selected="true" aria-controls="part-education" id="part-tab-education">
-              <span class="tab-title">教育经历</span>
-            </button>
-            <button class="tab-button" type="button" role="tab" aria-selected="false" aria-controls="part-projects" id="part-tab-projects">
-              <span class="tab-title">项目经历</span>
-            </button>
-            <button class="tab-button" type="button" role="tab" aria-selected="false" aria-controls="part-work" id="part-tab-work">
-              <span class="tab-title">工作经历</span>
-            </button>
-            <button class="tab-button" type="button" role="tab" aria-selected="false" aria-controls="part-skills" id="part-tab-skills">
-              <span class="tab-title">技能</span>
-            </button>
-            <button class="tab-button" type="button" role="tab" aria-selected="false" aria-controls="part-awards" id="part-tab-awards">
-              <span class="tab-title">获奖记录</span>
-            </button>
-          </div>
-
-          <section class="tab-panel active" role="tabpanel" id="part-education" aria-labelledby="part-tab-education">
-            <h2>教育经历</h2>
-            <div class="entry-list">
-              <article class="entry">
-                <div class="entry-time">2025/09 - 2027/06</div>
-                <div>
-                  <h3>中山大学 硕士 - 应用统计</h3>
-                  <ul class="lines">
-                    <li><span class="label">学院：</span>数学学院</li>
-                    <li><span class="label">专业：</span>应用统计</li>
-                    <li><span class="label">专业方向：</span>深度学习，大语言模型</li>
-                    <li><span class="label">相关课程：</span>人工智能算法选讲；机器学习与数据挖掘；数据分析高级编程；统计推断；回归分析，算法设计...</li>
-                  </ul>
-                </div>
-              </article>
-              <article class="entry">
-                <div class="entry-time">2021/09 - 2025/06</div>
-                <div>
-                  <h3>华南理工大学 本科 - 数学与应用数学&自动化双学位</h3>
-                  <ul class="lines">
-                    <li><span class="label">学院：</span>数学学院</li>
-                    <li><span class="label">专业：</span>数学与应用数学（主修）；自动化（辅修）</li>
-                    <li><span class="label">毕设方向：</span>分布式优化</li>
-                    <li><span class="label">相关课程：</span>数学分析；高等代数；概率论；数理统计；C++语言与程序设计；数据结构与算法；模电；数电；数学建模；自控原理；人工智能；微型计算机系统与应用...</li>
-                  </ul>
-                </div>
-              </article>
-            </div>
-          </section>
-
-          <section class="tab-panel" role="tabpanel" id="part-projects" aria-labelledby="part-tab-projects">
-            <h2>项目经历</h2>
-            <div class="entry-list">
-              <article class="entry">
-                <div class="entry-time">2026/05 - 至今</div>
-                <div>
-                  <div class="panel-head">
-                    <h3>Golden Template 网络配置智能校验运维系统</h3>
-                    <span class="side-note">方向：LLM Agent</span>
-                  </div>
-                  <p>Golden Template 是华为面向网络配置智能校验与运维场景打造的平台，旨在通过规则化、自动化的方式提升网络配置检查效率与运维质量。本人为系统设计并打造了 Nora 智能助手（Network Orchestration & Rules Agent）。Nora 基于自然语言理解能力，能够将用户的运维诉求自动解析为结构化规则，支持规则的生成、修改、保存、管理与调用，并可联动系统内既有资源完成配置校验任务。该助手显著降低了网络工程师编写校验规则、执行配置检查和维护规则资产的复杂度，提升了平台的易用性与自动化水平。</p>
-                </div>
-              </article>
-              <article class="entry">
-                <div class="entry-time">2026/03 - 2026/05</div>
-                <div>
-                  <div class="panel-head">
-                    <h3>基于Agentic RAG的网络配置翻译与生成系统</h3>
-                    <span class="side-note">方向：LLM Agent</span>
-                  </div>
-                  <p>作为团队核心成员，为配置翻译与生成场景打造了一套超高准确度的agentic RAG工具，用于华为与思科设备等配置命令手册检索与生成，实测检索准确率超过98%，远高于传统基于embedding的检索（准确度低于90%，完全无法处理相似的命令），目前该系统硬件在Cisco to huawei配置文件翻译，路由网络配置文件生成，故障注入，网络世界模型等项目中上线应用。</p>
-                </div>
-              </article>
-              <article class="entry">
-                <div class="entry-time">2026/03 - 2026/04</div>
-                <div>
-                  <div class="panel-head">
-                    <h3>基于multi-agent的竞品对比分析系统</h3>
-                    <span class="side-note">方向：LLM Agent</span>
-                  </div>
-                  <p>本人设计并实现了一个面向通用市场情报研究的多 Agent 竞品分析平台，支持用户输入品类与分析目标后，自动完成任务理解、竞品发现、信息源规划、网页搜索与抓取、结构化信息抽取、证据链构建、多维竞品分析、质量审查和报告生成。支持DAG 可视化、证据库、报告编辑与导出。实现了一个可追溯、可复核、可导出的自动化竞品分析与对比流程。</p>
-                </div>
-              </article>
-              <article class="entry">
-                <div class="entry-time">2024/10-2025/6</div>
-                <div>
-                  <div class="panel-head">
-                    <h3>事件触发通信下的分布式优化研究</h3>
-                    <span class="side-note">方向：优化理论</span>
-                  </div>
-                  <p>重点研究了分布式梯度跟踪方法。针对无向连通网络下的DIGing算法，我提出了一种改进型事件触发机制，得到了一种新的基于事件触发通信的DIGing算法。此算法在强凸目标函数的条件下能够收敛到全局最优解，在理论上避免了既有触发机制参数选择困难等问题，具有参数选择简单易行的优点，且在一定程度上降低了通信负担。 针对有向强连通网络下的场景，我将上述事件触发机制拓展应用到了Push-DIGing算法，设计了一种全新的基于事件触发通信的Push-DIGing算法。此算法在强凸目标函数的条件下能够收敛到全局最优解，且相较于原始的Push-DIGing算法显著降低了通信率。最终我的研究成果获得了华南理工大学优秀毕业论文。</p>
-                </div>
-              </article>
-            </div>
-          </section>
-
-          <section class="tab-panel" role="tabpanel" id="part-work" aria-labelledby="part-tab-work">
-            <h2>工作经历</h2>
-            <div class="entry-list">
-              <article class="entry">
-                <div class="entry-time">2026/03 - 至今</div>
-                <div class="block">
-                  <div class="panel-head">
-                    <h3>华为技术有限公司</h3>
-                    <span class="side-note">职位：AI工程师（agent方向）</span>
-                  </div>
-                  <p><span class="label">公司介绍：</span>华为ict bg, 网络孪生仿真实验室，lab主要研究方向为通信网络agent。</p>
-                  <p><span class="label">工作内容：</span>主要工作内容为研究LLM技术在通信网络中的工程应用，包括但不限于配置翻译，配置生成，智能校验与运维，网络世界模型等领域，目前本人打造的多套LLM Agent已投入使用，效果良好，大大降低了一线网络工程师的工作负荷，提升了工作效率。</p>
-                </div>
-              </article>
-              <article class="entry">
-                <div class="entry-time">2025/11 - 2026/01</div>
-                <div class="block">
-                  <div class="panel-head">
-                    <h3>广州智用人工智能研究院</h3>
-                    <span class="side-note">职位：LLM应用工程师</span>
-                  </div>
-                  <p><span class="label">公司介绍：</span>公司主营业务为to B的LLM agent。</p>
-                  <p><span class="label">工作内容：</span>主要工作内容是为agent项目提供技术方案；使用python语言编写demo验证方案可行性；商用agent开发。工作期间自主完成了基于vl模型的表格内容提取agent和图片翻译agent（any to Chinese），印式英语/中文的tts/stt agent等多个项目。</p>
-                </div>
-              </article>
-              <article class="entry">
-                <div class="entry-time">2024/11 - 2025/03</div>
-                <div class="block">
-                  <div class="panel-head">
-                    <h3>上海泰雷兹智能卡技术有限公司</h3>
-                    <span class="side-note">职位：RPA工程师</span>
-                  </div>
-                  <p><span class="label">公司介绍：</span>法国THALES集团的中国分公司，负责智能卡业务。</p>
-                  <p><span class="label">工作内容：</span>主要工作为机器人流程自动化（RPA）开发，工作期间我协调了相关部门的需求，为公司设计了四套RPA程序，并对应修改和优化了数据库的业务逻辑，用于Oracle系统的自动查找数据，填写和下载WorkOrder，BOM Routing等任务。避免了大量重复性人工操作也降低了人工操作可能产生的错误，提升了公司的生产管理效率。</p>
-                </div>
-              </article>
-            </div>
-          </section>
-
-          <section class="tab-panel" role="tabpanel" id="part-skills" aria-labelledby="part-tab-skills">
-            <h2>技能</h2>
-            <ul class="skill-list">
-              <li><span class="label">专业知识：</span><span>掌握数学（优化理论，微积分，代数），统计（概率论与数理统计，回归分析，统计推断），计算机（数据结构与算法，计网，微机原理）相关基础知识</span></li>
-              <li><span class="label">专业技能：</span><span>精通深度学习，llm与agent理论知识，熟悉基于transformer的GPT，BERT，DeepSeek等模型原理及ReAct，workflow，harness等agent基础知识，熟悉Linux基本操作，熟悉conda，ssh，git等环境管理</span></li>
-              <li><span class="label">编程语言：</span><span>擅长Python语言，熟练使用langchain，pytorch，numpy等库进行编程，具有良好的编程习惯，有模型训练，微调经验，agent开发实践经验；熟悉数据库系统，熟练使用SQL语言进行数据库管理；熟悉C++语言</span></li>
-              <li><span class="label">英语:</span><span>IELTS ACADEMIC：7.0分；CET 6：582分</span></li>
-            </ul>
-          </section>
-
-          <section class="tab-panel" role="tabpanel" id="part-awards" aria-labelledby="part-tab-awards">
-            <h2>获奖记录</h2>
-            <ul class="award-list">
-              <li>2024 MCM（美国大学生数学建模竞赛）: Finalist (全球前2%)</li>
-              <li>2025 华南理工大学校级优秀毕业论文（全校1%）</li>
-              <li>2025 华南理工大学“遇见小面创新奖学金”学生科技创新竞赛奖学金 一等奖（全校1%）</li>
-              <li>2023 广州高校数学建模联赛：一等奖（第一名）</li>
-              <li>其他数学建模，奖学金，优干等奖项若干</li>
-            </ul>
-          </section>
+        <div class="tab-shell" data-tabs>
+          <div class="tab-strip" role="tablist" aria-label="简历模块" id="partTabs"></div>
+          <div id="partPanels"></div>
         </div>
       </article>
     </main>
     <script>
-      document.querySelectorAll("[data-tabs]").forEach((shell) => {
+      const resumeData = {
+        zh: {
+          htmlLang: "zh-CN",
+          title: "姜明烨简历",
+          description: "姜明烨简历",
+          toggle: "English",
+          name: "姜明烨",
+          photoAlt: "姜明烨照片",
+          summary: ["硕士&双学士学位", "LLM Agent & LLM算法"],
+          contact: ["男", "在校生", "共青团员", "现居广州", "(+86)15773982990", "mingyejiang@foxmail.com"],
+          actions: {
+            email: "邮件联系",
+            download: "下载PDF",
+          },
+          sections: [
+            {
+              id: "education",
+              title: "教育经历",
+              entries: [
+                {
+                  time: "2025/09 - 2027/06",
+                  title: "中山大学 硕士 - 应用统计",
+                  lines: [
+                    ["学院：", "数学学院"],
+                    ["专业：", "应用统计"],
+                    ["专业方向：", "深度学习，大语言模型"],
+                    ["相关课程：", "人工智能算法选讲；机器学习与数据挖掘；数据分析高级编程；统计推断；回归分析，算法设计..."],
+                  ],
+                },
+                {
+                  time: "2021/09 - 2025/06",
+                  title: "华南理工大学 本科 - 数学与应用数学&自动化双学位",
+                  lines: [
+                    ["学院：", "数学学院"],
+                    ["专业：", "数学与应用数学（主修）；自动化（辅修）"],
+                    ["毕设方向：", "分布式优化"],
+                    ["相关课程：", "数学分析；高等代数；概率论；数理统计；C++语言与程序设计；数据结构与算法；模电；数电；数学建模；自控原理；人工智能；微型计算机系统与应用..."],
+                  ],
+                },
+              ],
+            },
+            {
+              id: "projects",
+              title: "项目经历",
+              entries: [
+                {
+                  time: "2026/05 - 至今",
+                  title: "Golden Template 网络配置智能校验运维系统",
+                  side: "方向：LLM Agent",
+                  text: "Golden Template 是华为面向网络配置智能校验与运维场景打造的平台，旨在通过规则化、自动化的方式提升网络配置检查效率与运维质量。本人为系统设计并打造了 Nora 智能助手（Network Orchestration & Rules Agent）。Nora 基于自然语言理解能力，能够将用户的运维诉求自动解析为结构化规则，支持规则的生成、修改、保存、管理与调用，并可联动系统内既有资源完成配置校验任务。该助手显著降低了网络工程师编写校验规则、执行配置检查和维护规则资产的复杂度，提升了平台的易用性与自动化水平。",
+                },
+                {
+                  time: "2026/03 - 2026/05",
+                  title: "基于Agentic RAG的网络配置翻译与生成系统",
+                  side: "方向：LLM Agent",
+                  text: "作为团队核心成员，为配置翻译与生成场景打造了一套超高准确度的agentic RAG工具，用于华为与思科设备等配置命令手册检索与生成，实测检索准确率超过98%，远高于传统基于embedding的检索（准确度低于90%，完全无法处理相似的命令），目前该系统硬件在Cisco to huawei配置文件翻译，路由网络配置文件生成，故障注入，网络世界模型等项目中上线应用。",
+                },
+                {
+                  time: "2026/03 - 2026/04",
+                  title: "基于multi-agent的竞品对比分析系统",
+                  side: "方向：LLM Agent",
+                  text: "本人设计并实现了一个面向通用市场情报研究的多 Agent 竞品分析平台，支持用户输入品类与分析目标后，自动完成任务理解、竞品发现、信息源规划、网页搜索与抓取、结构化信息抽取、证据链构建、多维竞品分析、质量审查和报告生成。支持DAG 可视化、证据库、报告编辑与导出。实现了一个可追溯、可复核、可导出的自动化竞品分析与对比流程。",
+                },
+                {
+                  time: "2024/10-2025/6",
+                  title: "事件触发通信下的分布式优化研究",
+                  side: "方向：优化理论",
+                  text: "重点研究了分布式梯度跟踪方法。针对无向连通网络下的DIGing算法，我提出了一种改进型事件触发机制，得到了一种新的基于事件触发通信的DIGing算法。此算法在强凸目标函数的条件下能够收敛到全局最优解，在理论上避免了既有触发机制参数选择困难等问题，具有参数选择简单易行的优点，且在一定程度上降低了通信负担。 针对有向强连通网络下的场景，我将上述事件触发机制拓展应用到了Push-DIGing算法，设计了一种全新的基于事件触发通信的Push-DIGing算法。此算法在强凸目标函数的条件下能够收敛到全局最优解，且相较于原始的Push-DIGing算法显著降低了通信率。最终我的研究成果获得了华南理工大学优秀毕业论文。",
+                },
+              ],
+            },
+            {
+              id: "work",
+              title: "工作经历",
+              entries: [
+                {
+                  time: "2026/03 - 至今",
+                  title: "华为技术有限公司",
+                  side: "职位：AI工程师（agent方向）",
+                  paragraphs: [
+                    ["公司介绍：", "华为ict bg, 网络孪生仿真实验室，lab主要研究方向为通信网络agent。"],
+                    ["工作内容：", "主要工作内容为研究LLM技术在通信网络中的工程应用，包括但不限于配置翻译，配置生成，智能校验与运维，网络世界模型等领域，目前本人打造的多套LLM Agent已投入使用，效果良好，大大降低了一线网络工程师的工作负荷，提升了工作效率。"],
+                  ],
+                },
+                {
+                  time: "2025/11 - 2026/01",
+                  title: "广州智用人工智能研究院",
+                  side: "职位：LLM应用工程师",
+                  paragraphs: [
+                    ["公司介绍：", "公司主营业务为to B的LLM agent。"],
+                    ["工作内容：", "主要工作内容是为agent项目提供技术方案；使用python语言编写demo验证方案可行性；商用agent开发。工作期间自主完成了基于vl模型的表格内容提取agent和图片翻译agent（any to Chinese），印式英语/中文的tts/stt agent等多个项目。"],
+                  ],
+                },
+                {
+                  time: "2024/11 - 2025/03",
+                  title: "上海泰雷兹智能卡技术有限公司",
+                  side: "职位：RPA工程师",
+                  paragraphs: [
+                    ["公司介绍：", "法国THALES集团的中国分公司，负责智能卡业务。"],
+                    ["工作内容：", "主要工作为机器人流程自动化（RPA）开发，工作期间我协调了相关部门的需求，为公司设计了四套RPA程序，并对应修改和优化了数据库的业务逻辑，用于Oracle系统的自动查找数据，填写和下载WorkOrder，BOM Routing等任务。避免了大量重复性人工操作也降低了人工操作可能产生的错误，提升了公司的生产管理效率。"],
+                  ],
+                },
+              ],
+            },
+            {
+              id: "skills",
+              title: "技能",
+              skills: [
+                ["专业知识：", "掌握数学（优化理论，微积分，代数），统计（概率论与数理统计，回归分析，统计推断），计算机（数据结构与算法，计网，微机原理）相关基础知识"],
+                ["专业技能：", "精通深度学习，llm与agent理论知识，熟悉基于transformer的GPT，BERT，DeepSeek等模型原理及ReAct，workflow，harness等agent基础知识，熟悉Linux基本操作，熟悉conda，ssh，git等环境管理"],
+                ["编程语言：", "擅长Python语言，熟练使用langchain，pytorch，numpy等库进行编程，具有良好的编程习惯，有模型训练，微调经验，agent开发实践经验；熟悉数据库系统，熟练使用SQL语言进行数据库管理；熟悉C++语言"],
+                ["英语:", "IELTS ACADEMIC：7.0分；CET 6：582分"],
+              ],
+            },
+            {
+              id: "awards",
+              title: "获奖记录",
+              awards: [
+                "2024 MCM（美国大学生数学建模竞赛）: Finalist (全球前2%)",
+                "2025 华南理工大学校级优秀毕业论文（全校1%）",
+                "2025 华南理工大学“遇见小面创新奖学金”学生科技创新竞赛奖学金 一等奖（全校1%）",
+                "2023 广州高校数学建模联赛：一等奖（第一名）",
+                "其他数学建模，奖学金，优干等奖项若干",
+              ],
+            },
+          ],
+        },
+        en: {
+          htmlLang: "en",
+          title: "Mingye JIANG Resume",
+          description: "Mingye JIANG Resume",
+          toggle: "简体中文",
+          name: "Mingye JIANG",
+          photoAlt: "Portrait of Mingye JIANG",
+          summary: ["Master's & Dual Bachelor's Degrees", "LLM Agent & LLM Algorithms"],
+          contact: ["Male", "Student", "Communist Youth League Member", "Currently in Guangzhou", "(+86)15773982990", "mingyejiang@foxmail.com"],
+          actions: {
+            email: "Email",
+            download: "Download PDF",
+          },
+          sections: [
+            {
+              id: "education",
+              title: "Education",
+              entries: [
+                {
+                  time: "2025/09 - 2027/06",
+                  title: "Sun Yat-sen University, M.S. in Applied Statistics",
+                  lines: [
+                    ["School: ", "School of Mathematics"],
+                    ["Major: ", "Applied Statistics"],
+                    ["Research Focus: ", "Deep Learning, Large Language Models"],
+                    ["Relevant Courses: ", "Selected Topics in Artificial Intelligence Algorithms; Machine Learning and Data Mining; Advanced Programming for Data Analysis; Statistical Inference; Regression Analysis; Algorithm Design..."],
+                  ],
+                },
+                {
+                  time: "2021/09 - 2025/06",
+                  title: "South China University of Technology, B.S. in Mathematics and Applied Mathematics & B.Eng. in Automation",
+                  lines: [
+                    ["School: ", "School of Mathematics"],
+                    ["Major: ", "Mathematics and Applied Mathematics (major); Automation (minor)"],
+                    ["Thesis Focus: ", "Distributed Optimization"],
+                    ["Relevant Courses: ", "Mathematical Analysis; Advanced Algebra; Probability Theory; Mathematical Statistics; C++ Programming; Data Structures and Algorithms; Analog Electronics; Digital Electronics; Mathematical Modeling; Principles of Automatic Control; Artificial Intelligence; Microcomputer Systems and Applications..."],
+                  ],
+                },
+              ],
+            },
+            {
+              id: "projects",
+              title: "Project Experience",
+              entries: [
+                {
+                  time: "2026/05 - Present",
+                  title: "Golden Template Intelligent Network Configuration Validation and O&M System",
+                  side: "Direction: LLM Agent",
+                  text: "Golden Template is a Huawei platform built for intelligent validation and operations of network configurations. It aims to improve configuration inspection efficiency and O&M quality through rule-based and automated methods. I designed and built Nora, an intelligent assistant (Network Orchestration & Rules Agent), for the system. Based on natural language understanding, Nora automatically parses users' O&M requests into structured rules, supports rule generation, modification, saving, management, and invocation, and can coordinate with existing system resources to complete configuration validation tasks. The assistant significantly reduces the complexity for network engineers in writing validation rules, running configuration checks, and maintaining rule assets, improving platform usability and automation.",
+                },
+                {
+                  time: "2026/03 - 2026/05",
+                  title: "Network Configuration Translation and Generation System Based on Agentic RAG",
+                  side: "Direction: LLM Agent",
+                  text: "As a core team member, I built a high-accuracy agentic RAG tool for configuration translation and generation scenarios, supporting retrieval and generation over Huawei and Cisco device command manuals. In tests, the retrieval accuracy exceeded 98%, much higher than traditional embedding-based retrieval (below 90% and unable to handle similar commands). The system has been deployed in projects including Cisco-to-Huawei configuration file translation, routing network configuration generation, fault injection, and network world models.",
+                },
+                {
+                  time: "2026/03 - 2026/04",
+                  title: "Multi-Agent Competitor Comparison and Analysis System",
+                  side: "Direction: LLM Agent",
+                  text: "I designed and implemented a multi-agent competitor analysis platform for general market intelligence research. After users input a product category and analysis objective, the platform automatically completes task understanding, competitor discovery, source planning, web search and crawling, structured information extraction, evidence-chain construction, multi-dimensional competitor analysis, quality review, and report generation. It supports DAG visualization, an evidence repository, report editing, and export, enabling an automated competitor analysis and comparison workflow that is traceable, reviewable, and exportable.",
+                },
+                {
+                  time: "2024/10 - 2025/6",
+                  title: "Research on Distributed Optimization Under Event-Triggered Communication",
+                  side: "Direction: Optimization Theory",
+                  text: "This project focused on distributed gradient tracking methods. For the DIGing algorithm under undirected connected networks, I proposed an improved event-triggered mechanism and derived a new event-triggered communication-based DIGing algorithm. Under strongly convex objective functions, the algorithm converges to the global optimum, theoretically avoiding the parameter selection difficulties of existing triggering mechanisms, making parameter selection simpler and reducing communication burden to some extent. For directed strongly connected networks, I extended this event-triggered mechanism to the Push-DIGing algorithm and designed a new event-triggered Push-DIGing algorithm. Under strongly convex objective functions, the algorithm converges to the global optimum and significantly reduces the communication rate compared with the original Push-DIGing algorithm. This research received the Outstanding Undergraduate Thesis Award of South China University of Technology.",
+                },
+              ],
+            },
+            {
+              id: "work",
+              title: "Work Experience",
+              entries: [
+                {
+                  time: "2026/03 - Present",
+                  title: "Huawei Technologies Co., Ltd.",
+                  side: "Position: AI Engineer (Agent Direction)",
+                  paragraphs: [
+                    ["Company: ", "ICT BG, Network Digital Twin Simulation Laboratory, with a main research focus on communication network agents."],
+                    ["Work: ", "My work focuses on engineering applications of LLM technologies in communication networks, including configuration translation, configuration generation, intelligent validation and O&M, and network world models. Multiple LLM Agents I built have been put into use with good results, greatly reducing frontline network engineers' workload and improving work efficiency."],
+                  ],
+                },
+                {
+                  time: "2025/11 - 2026/01",
+                  title: "Guangzhou Zhiyong Artificial Intelligence Research Institute",
+                  side: "Position: LLM Application Engineer",
+                  paragraphs: [
+                    ["Company: ", "The company's main business is To-B LLM agents."],
+                    ["Work: ", "I provided technical solutions for agent projects, wrote demos in Python to validate feasibility, and developed commercial agents. During the internship, I independently completed multiple projects, including a VL-model-based table content extraction agent, an image translation agent (any language to Chinese), and TTS/STT agents for Indian English and Chinese."],
+                  ],
+                },
+                {
+                  time: "2024/11 - 2025/03",
+                  title: "Shanghai Thales Smart Card Technology Co., Ltd.",
+                  side: "Position: RPA Engineer",
+                  paragraphs: [
+                    ["Company: ", "The Chinese subsidiary of France-based THALES Group, responsible for the smart card business."],
+                    ["Work: ", "My main work was robotic process automation (RPA) development. I coordinated requirements across departments, designed four RPA programs for the company, and modified and optimized database business logic for tasks such as automatically searching data in Oracle systems and filling in and downloading WorkOrders and BOM Routing. These programs avoided a large amount of repetitive manual work, reduced possible human errors, and improved production management efficiency."],
+                  ],
+                },
+              ],
+            },
+            {
+              id: "skills",
+              title: "Skills",
+              skills: [
+                ["Professional Knowledge: ", "Solid foundation in mathematics (optimization theory, calculus, algebra), statistics (probability theory and mathematical statistics, regression analysis, statistical inference), and computer science (data structures and algorithms, computer networks, microcomputer principles)."],
+                ["Technical Skills: ", "Proficient in deep learning and LLM/agent theory; familiar with Transformer-based models such as GPT, BERT, and DeepSeek, as well as agent fundamentals including ReAct, workflow, and harness; familiar with Linux basics and environment management tools such as conda, ssh, and git."],
+                ["Programming Languages: ", "Strong Python skills; proficient in using LangChain, PyTorch, NumPy, and related libraries with good programming habits; experience in model training, fine-tuning, and agent development; familiar with database systems and SQL for database management; familiar with C++."],
+                ["English: ", "IELTS Academic: 7.0; CET-6: 582."],
+              ],
+            },
+            {
+              id: "awards",
+              title: "Awards",
+              awards: [
+                "2024 MCM (Mathematical Contest in Modeling): Finalist (global top 2%)",
+                "2025 Outstanding Undergraduate Thesis, South China University of Technology (university-wide top 1%)",
+                "2025 First Prize, SCUT \"Meet Xiaomian Innovation Scholarship\" Student Technology Innovation Competition Scholarship (university-wide top 1%)",
+                "2023 First Prize (1st place), Guangzhou University Mathematical Modeling League",
+                "Additional awards in mathematical modeling, scholarships, outstanding student leader honors, etc.",
+              ],
+            },
+          ],
+        },
+      };
+
+      let currentLang = "zh";
+
+      function el(tag, options = {}, children = []) {
+        const node = document.createElement(tag);
+        if (options.className) node.className = options.className;
+        if (options.text !== undefined) node.textContent = options.text;
+        if (options.html !== undefined) node.innerHTML = options.html;
+        Object.entries(options.attrs || {}).forEach(([key, value]) => node.setAttribute(key, value));
+        children.forEach((child) => node.appendChild(child));
+        return node;
+      }
+
+      function renderEntry(entry) {
+        const content = el("div");
+        const head = el("div", { className: "panel-head" }, [el("h3", { text: entry.title })]);
+        if (entry.side) head.appendChild(el("span", { className: "side-note", text: entry.side }));
+        content.appendChild(head);
+
+        if (entry.lines) {
+          const list = el("ul", { className: "lines" });
+          entry.lines.forEach(([label, value]) => {
+            list.appendChild(el("li", {}, [el("span", { className: "label", text: label }), document.createTextNode(value)]));
+          });
+          content.appendChild(list);
+        }
+
+        if (entry.text) content.appendChild(el("p", { text: entry.text }));
+
+        if (entry.paragraphs) {
+          content.classList.add("block");
+          entry.paragraphs.forEach(([label, value]) => {
+            content.appendChild(el("p", {}, [el("span", { className: "label", text: label }), document.createTextNode(value)]));
+          });
+        }
+
+        return el("article", { className: "entry" }, [el("div", { className: "entry-time", text: entry.time }), content]);
+      }
+
+      function renderSection(section, index) {
+        const panel = el("section", {
+          className: `tab-panel${index === 0 ? " active" : ""}`,
+          attrs: {
+            role: "tabpanel",
+            id: `part-${section.id}`,
+            "aria-labelledby": `part-tab-${section.id}`,
+          },
+        });
+        panel.appendChild(el("h2", { text: section.title }));
+
+        if (section.entries) {
+          const list = el("div", { className: "entry-list" });
+          section.entries.forEach((entry) => list.appendChild(renderEntry(entry)));
+          panel.appendChild(list);
+        }
+
+        if (section.skills) {
+          const list = el("ul", { className: "skill-list" });
+          section.skills.forEach(([label, value]) => {
+            list.appendChild(el("li", {}, [el("span", { className: "label", text: label }), el("span", { text: value })]));
+          });
+          panel.appendChild(list);
+        }
+
+        if (section.awards) {
+          const list = el("ul", { className: "award-list" });
+          section.awards.forEach((award) => list.appendChild(el("li", { text: award })));
+          panel.appendChild(list);
+        }
+
+        return panel;
+      }
+
+      function render(lang) {
+        currentLang = lang;
+        const data = resumeData[lang];
+        document.documentElement.lang = data.htmlLang;
+        document.title = data.title;
+        document.querySelector('meta[name="description"]').setAttribute("content", data.description);
+        document.getElementById("languageToggle").textContent = data.toggle;
+        document.getElementById("name").textContent = data.name;
+        document.getElementById("profilePhoto").alt = data.photoAlt;
+        document.getElementById("summary").replaceChildren(...data.summary.map((item) => el("span", { text: item })));
+        document.getElementById("contact").replaceChildren(...data.contact.map((item) => el("li", { text: item })));
+        document.getElementById("emailButton").textContent = data.actions.email;
+        document.getElementById("downloadButton").textContent = data.actions.download;
+
+        const tabs = document.getElementById("partTabs");
+        const panels = document.getElementById("partPanels");
+        tabs.replaceChildren();
+        panels.replaceChildren();
+
+        data.sections.forEach((section, index) => {
+          tabs.appendChild(
+            el("button", {
+              className: "tab-button",
+              attrs: {
+                type: "button",
+                role: "tab",
+                "aria-selected": String(index === 0),
+                "aria-controls": `part-${section.id}`,
+                id: `part-tab-${section.id}`,
+              },
+            }, [el("span", { className: "tab-title", text: section.title })])
+          );
+          panels.appendChild(renderSection(section, index));
+        });
+
+        wireTabs();
+      }
+
+      function wireTabs() {
+        const shell = document.querySelector("[data-tabs]");
         const buttons = Array.from(shell.querySelectorAll(".tab-button"));
         const panels = Array.from(shell.querySelectorAll(".tab-panel"));
 
@@ -614,7 +810,13 @@
             panels.forEach((panel) => panel.classList.toggle("active", panel.id === targetId));
           });
         });
+      }
+
+      document.getElementById("languageToggle").addEventListener("click", () => {
+        render(currentLang === "zh" ? "en" : "zh");
       });
+
+      render(currentLang);
     </script>
   </body>
 </html>
