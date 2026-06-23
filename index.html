@@ -1,0 +1,726 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>姜明烨 | LLM Agent & AI Engineer</title>
+    <meta
+      name="description"
+      content="姜明烨的个人主页：LLM Agent、网络智能体、配置自动化、优化理论与应用统计。"
+    />
+    <meta property="og:title" content="姜明烨 | LLM Agent & AI Engineer" />
+    <meta
+      property="og:description"
+      content="面向网络配置、智能运维与算法研究的 AI 工程实践。"
+    />
+    <meta property="og:image" content="assets/profile.jpg" />
+    <link rel="icon" href="assets/profile.jpg" />
+    <style>
+      :root {
+        color-scheme: light;
+        --ink: #171717;
+        --muted: #5f6368;
+        --line: #e8e3db;
+        --paper: #fbfaf7;
+        --white: #ffffff;
+        --teal: #0b766f;
+        --teal-soft: #d9f0ed;
+        --coral: #d85d45;
+        --gold: #b8831f;
+        --sky: #2f7ea8;
+        --shadow: 0 18px 45px rgba(23, 23, 23, 0.08);
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+          "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        color: var(--ink);
+        background: var(--paper);
+        line-height: 1.65;
+        letter-spacing: 0;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      img {
+        display: block;
+        max-width: 100%;
+      }
+
+      .site-header {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+        min-height: 64px;
+        padding: 14px clamp(20px, 4vw, 56px);
+        border-bottom: 1px solid rgba(232, 227, 219, 0.82);
+        background: rgba(251, 250, 247, 0.88);
+        backdrop-filter: blur(18px);
+      }
+
+      .brand {
+        font-weight: 800;
+        font-size: 18px;
+      }
+
+      .nav {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 4px;
+      }
+
+      .nav a {
+        min-height: 36px;
+        padding: 7px 12px;
+        border-radius: 6px;
+        color: var(--muted);
+        font-size: 14px;
+        transition: color 160ms ease, background 160ms ease;
+      }
+
+      .nav a:hover {
+        color: var(--ink);
+        background: #ffffff;
+      }
+
+      .hero {
+        position: relative;
+        min-height: 82vh;
+        display: grid;
+        align-items: center;
+        overflow: hidden;
+        background:
+          linear-gradient(90deg, rgba(251, 250, 247, 0.98) 0%, rgba(251, 250, 247, 0.92) 44%, rgba(251, 250, 247, 0.5) 65%, rgba(251, 250, 247, 0.12) 100%),
+          url("assets/profile.jpg") right 10% center / min(45vw, 520px) auto no-repeat,
+          #fbfaf7;
+      }
+
+      .hero-inner {
+        width: min(1180px, calc(100% - 40px));
+        margin: 0 auto;
+        padding: clamp(56px, 9vw, 112px) 0;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        margin: 0 0 18px;
+        color: var(--teal);
+        font-weight: 800;
+        font-size: 13px;
+        text-transform: uppercase;
+      }
+
+      h1,
+      h2,
+      h3,
+      p {
+        margin-top: 0;
+      }
+
+      h1 {
+        max-width: 760px;
+        margin-bottom: 20px;
+        font-size: clamp(48px, 8vw, 96px);
+        line-height: 0.98;
+        font-weight: 900;
+      }
+
+      .hero-copy {
+        max-width: 660px;
+        margin-bottom: 28px;
+        color: #363636;
+        font-size: clamp(18px, 2vw, 24px);
+      }
+
+      .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+
+      .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 9px;
+        min-height: 44px;
+        padding: 10px 16px;
+        border: 1px solid var(--line);
+        border-radius: 6px;
+        background: var(--white);
+        color: var(--ink);
+        font-weight: 760;
+        box-shadow: 0 9px 20px rgba(23, 23, 23, 0.05);
+      }
+
+      .button.primary {
+        border-color: var(--teal);
+        background: var(--teal);
+        color: #fff;
+      }
+
+      .section {
+        padding: clamp(54px, 8vw, 92px) clamp(20px, 4vw, 56px);
+      }
+
+      .section.white {
+        background: var(--white);
+      }
+
+      .section-inner {
+        width: min(1180px, 100%);
+        margin: 0 auto;
+      }
+
+      .section-title {
+        display: grid;
+        grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+        gap: 32px;
+        align-items: end;
+        margin-bottom: 34px;
+      }
+
+      h2 {
+        margin-bottom: 0;
+        font-size: clamp(30px, 4vw, 48px);
+        line-height: 1.08;
+      }
+
+      .section-title p {
+        margin-bottom: 4px;
+        color: var(--muted);
+        font-size: 17px;
+      }
+
+      .metrics {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 14px;
+      }
+
+      .metric {
+        min-height: 128px;
+        padding: 22px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--white);
+        box-shadow: var(--shadow);
+      }
+
+      .metric strong {
+        display: block;
+        margin-bottom: 8px;
+        color: var(--teal);
+        font-size: 28px;
+        line-height: 1;
+      }
+
+      .metric span {
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      .timeline {
+        display: grid;
+        gap: 16px;
+      }
+
+      .item {
+        display: grid;
+        grid-template-columns: 190px minmax(0, 1fr);
+        gap: 24px;
+        padding: 22px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--white);
+      }
+
+      .time {
+        color: var(--teal);
+        font-weight: 800;
+        font-size: 14px;
+      }
+
+      .item h3 {
+        margin-bottom: 8px;
+        font-size: 21px;
+        line-height: 1.28;
+      }
+
+      .item p {
+        margin-bottom: 0;
+        color: #3f3f3f;
+      }
+
+      .tag-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 14px;
+      }
+
+      .tag {
+        display: inline-flex;
+        align-items: center;
+        min-height: 30px;
+        padding: 5px 10px;
+        border-radius: 999px;
+        background: var(--teal-soft);
+        color: #095953;
+        font-size: 13px;
+        font-weight: 760;
+      }
+
+      .grid-2 {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 16px;
+      }
+
+      .skill-panel {
+        padding: 24px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--white);
+      }
+
+      .skill-panel h3 {
+        margin-bottom: 10px;
+        font-size: 19px;
+      }
+
+      .skill-panel p,
+      .award-list li {
+        color: #454545;
+      }
+
+      .award-list {
+        display: grid;
+        gap: 14px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .award-list li {
+        padding: 18px 20px;
+        border-left: 4px solid var(--gold);
+        background: #fff8ea;
+      }
+
+      .resume-wrap {
+        display: grid;
+        grid-template-columns: minmax(0, 0.88fr) minmax(0, 1.12fr);
+        gap: 24px;
+        align-items: stretch;
+      }
+
+      .resume-copy {
+        padding: 26px;
+        border-radius: 8px;
+        background: #113c3a;
+        color: #fff;
+      }
+
+      .resume-copy p {
+        color: rgba(255, 255, 255, 0.78);
+      }
+
+      .resume-frame {
+        width: 100%;
+        min-height: 620px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: #fff;
+      }
+
+      .footer {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 16px;
+        padding: 28px clamp(20px, 4vw, 56px);
+        border-top: 1px solid var(--line);
+        color: var(--muted);
+        background: var(--white);
+        font-size: 14px;
+      }
+
+      .icon {
+        width: 18px;
+        height: 18px;
+        flex: 0 0 auto;
+      }
+
+      @media (max-width: 920px) {
+        .site-header {
+          align-items: flex-start;
+          flex-direction: column;
+          gap: 8px;
+        }
+
+        .nav {
+          justify-content: flex-start;
+        }
+
+        .hero {
+          min-height: auto;
+          padding-top: 220px;
+          background:
+            linear-gradient(180deg, rgba(251, 250, 247, 0.08) 0%, rgba(251, 250, 247, 0.92) 36%, #fbfaf7 62%),
+            url("assets/profile.jpg") center 10px / min(64vw, 300px) auto no-repeat,
+            #fbfaf7;
+        }
+
+        .hero-inner {
+          padding: 34px 0 46px;
+        }
+
+        .section-title,
+        .resume-wrap,
+        .item,
+        .grid-2 {
+          grid-template-columns: 1fr;
+        }
+
+        .metrics {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .resume-frame {
+          min-height: 520px;
+        }
+      }
+
+      @media (max-width: 560px) {
+        .brand {
+          font-size: 17px;
+        }
+
+        .nav a {
+          padding: 7px 9px;
+          font-size: 13px;
+        }
+
+        h1 {
+          font-size: clamp(42px, 16vw, 62px);
+        }
+
+        .hero-copy {
+          font-size: 17px;
+        }
+
+        .metrics {
+          grid-template-columns: 1fr;
+        }
+
+        .item,
+        .metric,
+        .skill-panel,
+        .resume-copy {
+          padding: 18px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="#top">姜明烨</a>
+      <nav class="nav" aria-label="主导航">
+        <a href="#about">概览</a>
+        <a href="#projects">项目</a>
+        <a href="#experience">经历</a>
+        <a href="#skills">技能</a>
+        <a href="#resume">简历</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="hero-inner">
+          <p class="eyebrow">LLM Agent · Network Intelligence · Applied Statistics</p>
+          <h1>姜明烨</h1>
+          <p class="hero-copy">
+            AI 工程师与应用统计硕士在读，聚焦 LLM Agent、网络配置智能运维、Agentic RAG
+            与优化算法研究。擅长把大模型能力落到真实工程系统里。
+          </p>
+          <div class="hero-actions">
+            <a class="button primary" href="assets/resume.pdf" target="_blank" rel="noreferrer">
+              <i data-lucide="file-text" class="icon" aria-hidden="true"></i>
+              查看简历
+            </a>
+            <a class="button" href="mailto:mingyejiang@foxmail.com">
+              <i data-lucide="mail" class="icon" aria-hidden="true"></i>
+              邮件联系
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="about">
+        <div class="section-inner">
+          <div class="section-title">
+            <h2>把算法研究变成可用系统</h2>
+            <p>
+              从分布式优化到通信网络 Agent，从竞品分析自动化到配置翻译与生成，我更关心模型如何进入复杂业务流程，并把结果做得可追溯、可复核、可交付。
+            </p>
+          </div>
+          <div class="metrics">
+            <div class="metric">
+              <strong>98%+</strong>
+              <span>Agentic RAG 配置命令检索实测准确率</span>
+            </div>
+            <div class="metric">
+              <strong>Top 2%</strong>
+              <span>2024 MCM Finalist</span>
+            </div>
+            <div class="metric">
+              <strong>双学士</strong>
+              <span>数学与应用数学主修，自动化辅修</span>
+            </div>
+            <div class="metric">
+              <strong>IELTS 7.0</strong>
+              <span>CET-6 582，具备英文技术资料阅读能力</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section white" id="education">
+        <div class="section-inner">
+          <div class="section-title">
+            <h2>教育背景</h2>
+            <p>数学、统计、自动化与人工智能的交叉训练，形成了从理论推导到工程落地的连续能力。</p>
+          </div>
+          <div class="timeline">
+            <article class="item">
+              <div class="time">2025.09 - 2027.06</div>
+              <div>
+                <h3>中山大学 · 应用统计硕士</h3>
+                <p>
+                  数学学院，方向覆盖深度学习与大语言模型。相关课程包括人工智能算法选讲、机器学习与数据挖掘、数据分析高级编程、统计推断与回归分析。
+                </p>
+              </div>
+            </article>
+            <article class="item">
+              <div class="time">2021.09 - 2025.06</div>
+              <div>
+                <h3>华南理工大学 · 数学与应用数学 & 自动化双学位</h3>
+                <p>
+                  主修数学与应用数学，辅修自动化。本科毕业设计方向为分布式优化，研究成果获华南理工大学优秀毕业论文。
+                </p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="projects">
+        <div class="section-inner">
+          <div class="section-title">
+            <h2>代表项目</h2>
+            <p>项目集中在 LLM Agent、网络智能运维、自动化分析与优化理论四条线上。</p>
+          </div>
+          <div class="timeline">
+            <article class="item">
+              <div class="time">2026.05 - 至今</div>
+              <div>
+                <h3>Golden Template 网络配置智能校验运维系统</h3>
+                <p>
+                  为平台设计并打造 Nora 智能助手，将自然语言运维诉求解析为结构化规则，支持规则生成、修改、保存、管理与调用，并联动系统资源完成配置校验任务。
+                </p>
+                <div class="tag-row">
+                  <span class="tag">LLM Agent</span>
+                  <span class="tag">网络运维</span>
+                  <span class="tag">规则生成</span>
+                </div>
+              </div>
+            </article>
+            <article class="item">
+              <div class="time">2026.03 - 2026.05</div>
+              <div>
+                <h3>基于 Agentic RAG 的网络配置翻译与生成系统</h3>
+                <p>
+                  作为团队核心成员，为华为与思科设备配置命令手册检索与生成构建高准确度 Agentic RAG 工具，支撑 Cisco to Huawei 配置文件翻译、路由配置生成、故障注入与网络世界模型等场景。
+                </p>
+                <div class="tag-row">
+                  <span class="tag">Agentic RAG</span>
+                  <span class="tag">检索增强生成</span>
+                  <span class="tag">配置翻译</span>
+                </div>
+              </div>
+            </article>
+            <article class="item">
+              <div class="time">2026.03 - 2026.04</div>
+              <div>
+                <h3>基于 Multi-Agent 的竞品对比分析系统</h3>
+                <p>
+                  设计并实现市场情报研究平台，覆盖任务理解、竞品发现、信息源规划、网页抓取、结构化抽取、证据链构建、多维分析、质量审查和报告生成。
+                </p>
+                <div class="tag-row">
+                  <span class="tag">Multi-Agent</span>
+                  <span class="tag">证据链</span>
+                  <span class="tag">DAG 可视化</span>
+                </div>
+              </div>
+            </article>
+            <article class="item">
+              <div class="time">2024.10 - 2025.06</div>
+              <div>
+                <h3>事件触发通信下的分布式优化研究</h3>
+                <p>
+                  针对 DIGing 与 Push-DIGing 算法提出事件触发通信机制，在强凸目标函数条件下保证收敛并降低通信负担，最终获华南理工大学优秀毕业论文。
+                </p>
+                <div class="tag-row">
+                  <span class="tag">优化理论</span>
+                  <span class="tag">分布式算法</span>
+                  <span class="tag">事件触发通信</span>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section white" id="experience">
+        <div class="section-inner">
+          <div class="section-title">
+            <h2>工作经历</h2>
+            <p>从 RPA 自动化到商用 Agent，再到通信网络智能体，持续围绕复杂流程的自动化与智能化展开。</p>
+          </div>
+          <div class="timeline">
+            <article class="item">
+              <div class="time">2026.03 - 至今</div>
+              <div>
+                <h3>华为技术有限公司 · AI 工程师（Agent 方向）</h3>
+                <p>
+                  在 ICT BG 网络孪生仿真实验室，研究 LLM 技术在通信网络中的工程应用，方向包括配置翻译、配置生成、智能校验与运维、网络世界模型等。
+                </p>
+              </div>
+            </article>
+            <article class="item">
+              <div class="time">2025.11 - 2026.01</div>
+              <div>
+                <h3>广州智用人工智能研究院 · LLM 应用工程师</h3>
+                <p>
+                  为 To B Agent 项目提供技术方案，使用 Python 编写 Demo 验证方案可行性，并完成表格内容提取、图片翻译、印式英语/中文 TTS/STT Agent 等项目。
+                </p>
+              </div>
+            </article>
+            <article class="item">
+              <div class="time">2024.11 - 2025.03</div>
+              <div>
+                <h3>上海泰雷兹智能卡技术有限公司 · RPA 工程师</h3>
+                <p>
+                  协调跨部门需求，设计四套 RPA 程序并优化数据库业务逻辑，用于 Oracle 系统自动查找数据、填写与下载 WorkOrder、BOM Routing 等任务。
+                </p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="skills">
+        <div class="section-inner">
+          <div class="section-title">
+            <h2>技能与荣誉</h2>
+            <p>技术栈覆盖大模型应用、深度学习、数学统计、工程开发与英文技术沟通。</p>
+          </div>
+          <div class="grid-2">
+            <div class="skill-panel">
+              <h3>专业技能</h3>
+              <p>
+                熟悉 Transformer、GPT、BERT、DeepSeek 等模型原理，掌握 ReAct、Workflow、Harness 等 Agent 基础范式；熟悉 Linux、Conda、SSH、Git 等环境管理。
+              </p>
+              <div class="tag-row">
+                <span class="tag">Python</span>
+                <span class="tag">LangChain</span>
+                <span class="tag">PyTorch</span>
+                <span class="tag">NumPy</span>
+                <span class="tag">SQL</span>
+                <span class="tag">C++</span>
+              </div>
+            </div>
+            <div class="skill-panel">
+              <h3>理论基础</h3>
+              <p>
+                掌握优化理论、微积分、代数、概率论与数理统计、回归分析、统计推断、数据结构与算法、计算机网络、微机原理等基础知识。
+              </p>
+              <div class="tag-row">
+                <span class="tag">优化理论</span>
+                <span class="tag">应用统计</span>
+                <span class="tag">数据结构</span>
+                <span class="tag">机器学习</span>
+              </div>
+            </div>
+          </div>
+          <div style="height: 18px"></div>
+          <ul class="award-list">
+            <li>2024 MCM 美国大学生数学建模竞赛 Finalist（全球前 2%）</li>
+            <li>2025 华南理工大学校级优秀毕业论文（全校 1%）</li>
+            <li>2025 华南理工大学“遇见小面创新奖学金”学生科技创新竞赛奖学金一等奖（全校 1%）</li>
+            <li>2023 广州高校数学建模联赛一等奖（第一名）</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="section white" id="resume">
+        <div class="section-inner resume-wrap">
+          <div class="resume-copy">
+            <p class="eyebrow" style="color: #9be0d8">Resume PDF</p>
+            <h2>正式简历</h2>
+            <p>
+              页面内容已从 PDF 简历整理为网页模块；原始 PDF 保留在站点资产中，适合投递、下载或在线预览。
+            </p>
+            <div class="hero-actions">
+              <a class="button" href="assets/resume.pdf" download>
+                <i data-lucide="download" class="icon" aria-hidden="true"></i>
+                下载 PDF
+              </a>
+              <a class="button" href="mailto:mingyejiang@foxmail.com">
+                <i data-lucide="send" class="icon" aria-hidden="true"></i>
+                发邮件
+              </a>
+            </div>
+          </div>
+          <object class="resume-frame" data="assets/resume.pdf" type="application/pdf">
+            <p>
+              当前浏览器无法内嵌显示 PDF。
+              <a href="assets/resume.pdf">打开简历 PDF</a>
+            </p>
+          </object>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <span>© 2026 姜明烨</span>
+      <span>mingyejiang@foxmail.com · Guangzhou, China</span>
+    </footer>
+
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+    <script>
+      window.lucide?.createIcons();
+    </script>
+  </body>
+</html>
