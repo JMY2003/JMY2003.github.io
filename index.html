@@ -569,6 +569,7 @@
             email: "邮件联系",
             github: "GitHub主页",
             viewPdf: "查看PDF",
+            pdfHref: "assets/resume.pdf",
           },
           sections: [
             {
@@ -709,6 +710,7 @@
             email: "Email",
             github: "GitHub",
             viewPdf: "View PDF",
+            pdfHref: "assets/resume-en.pdf",
           },
           sections: [
             {
@@ -950,6 +952,7 @@
         document.getElementById("emailButton").textContent = data.actions.email;
         document.getElementById("githubButton").textContent = data.actions.github;
         document.getElementById("downloadButton").textContent = data.actions.viewPdf;
+        document.getElementById("downloadButton").href = data.actions.pdfHref;
 
         const tabs = document.getElementById("partTabs");
         const panels = document.getElementById("partPanels");
