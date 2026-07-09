@@ -539,6 +539,7 @@
             <ul class="contact" id="contact"></ul>
             <div class="actions">
               <a class="button primary" id="emailButton" href="mailto:mingyejiang@foxmail.com"></a>
+              <a class="button secondary" id="githubButton" href="https://github.com/JMY2003" target="_blank" rel="noreferrer"></a>
               <a class="button secondary" id="downloadButton" href="assets/resume.pdf" target="_blank" rel="noreferrer"></a>
             </div>
           </div>
@@ -563,9 +564,10 @@
           name: "姜明烨",
           photoAlt: "姜明烨照片",
           summary: ["硕士&双学士学位", "LLM Agent & LLM算法"],
-          contact: ["男", "在校生", "共青团员", "现居广州", "(+86)15773982990", "mingyejiang@foxmail.com"],
+          contact: ["男", "在校生", "现居广州", "(+86)15773982990", "mingyejiang@foxmail.com"],
           actions: {
             email: "邮件联系",
+            github: "GitHub主页",
             viewPdf: "查看PDF",
           },
           sections: [
@@ -607,13 +609,13 @@
                   time: "2026/05 - 至今",
                   title: "Golden Template 网络配置智能校验运维系统",
                   side: "方向：LLM Agent",
-                  text: "Golden Template 是华为面向网络配置智能校验与运维场景打造的平台，旨在通过规则化、自动化的方式提升网络配置检查效率与运维质量。本人为系统设计并打造了 Nora 智能助手（Network Orchestration & Rules Agent）。Nora 基于自然语言理解能力，能够将用户的运维诉求自动解析为结构化规则，支持规则的生成、修改、保存、管理与调用，并可联动系统内既有资源完成配置校验任务。该助手显著降低了网络工程师编写校验规则、执行配置检查和维护规则资产的复杂度，提升了平台的易用性与自动化水平。",
+                  text: "Golden Template 是华为面向网络配置智能校验与运维场景打造的平台，旨在通过规则化、自动化的方式提升网络配置检查效率与运维质量。本人为系统设计并打造了 Nora 智能助手（Network Orchestration & Rules Agent）。Nora 基于自然语言理解能力，能够将用户的运维诉求自动解析为结构化规则，支持规则的生成、修改、保存、管理与调用，并可联动系统内既有资源完成配置校验任务。该助手显著降低了网络工程师编写校验规则、执行配置检查和维护规则的复杂度，提升了平台的易用性与自动化水平。",
                 },
                 {
                   time: "2026/06 - 至今",
-                  title: "LumenIndex：PageIndex-inspired 开源文档问答系统",
-                  side: "方向：Agentic RAG / FastAPI",
-                  text: "独立设计并开源了一个基于开源 PageIndex 思路深度优化的自托管文档检索问答系统。系统后端采用 FastAPI，前端采用 liquid-glass 风格交互，支持 PDF / DOCX / Markdown 多文档检索、持久会话、用户与资产隔离、管理员资产管理和 Docker Compose 部署。底层实现上放弃了对大文档持续调用 LLM 构建 TOC 的高成本路线，改用 PDF 书签、版面标题、目录页识别、页级切块和大节点细化等确定性索引策略；LLM 结构化输出统一经过 Pydantic 校验，并加入 ReAct 工具预算、上下文自动压缩、离线降级、可恢复错误和索引进度追踪，目标是将无向量、推理式 RAG 做成可交付系统而非 demo。",
+                  title: "LumenIndex：PageIndex-inspired Agentic-RAG 多文档检索问答系统",
+                  side: "方向：LLM Agent",
+                  text: "独立设计并开源了一个基于开源 PageIndex 思路深度优化的自托管多文档检索问答系统。系统后端采用 FastAPI，前端采用 liquid-glass 风格交互，支持 PDF / DOCX / Markdown 多文档检索、持久会话和 Docker Compose 部署。底层实现上放弃了对大文档持续调用 LLM 构建 TOC 的高成本路线，改用 PDF 书签、版面标题、目录页识别、页级切块和大节点细化等确定性索引策略；LLM 结构化输出统一经过 Pydantic 校验，并引入 ReAct 深度检索、上下文自动压缩、离线降级、可恢复错误和索引进度追踪，目标是将无向量、推理式 RAG 做成可交付系统而非 demo。",
                   links: [
                     ["GitHub", "https://github.com/JMY2003/pageindex-lumenindex-agentic-rag"],
                   ],
@@ -702,9 +704,10 @@
           name: "Mingye JIANG",
           photoAlt: "Portrait of Mingye JIANG",
           summary: ["Master's & Dual Bachelor's Degrees", "LLM Agent & LLM Algorithms"],
-          contact: ["Male", "Current Postgraduate Student", "Member, Communist Youth League", "Guangzhou, China", "(+86)15773982990", "mingyejiang@foxmail.com"],
+          contact: ["Male", "Current Postgraduate Student", "Guangzhou, China", "(+86)15773982990", "mingyejiang@foxmail.com"],
           actions: {
             email: "Email",
+            github: "GitHub",
             viewPdf: "View PDF",
           },
           sections: [
@@ -746,13 +749,13 @@
                   time: "2026/05 - Present",
                   title: "Golden Template Intelligent Network Configuration Validation and O&M System",
                   side: "Technical Focus: LLM Agent",
-                  text: "Golden Template is a Huawei platform built for intelligent validation and operations of network configurations. It aims to improve configuration inspection efficiency and O&M quality through rule-based and automated methods. I designed and built Nora, an intelligent assistant (Network Orchestration & Rules Agent), for the system. Based on natural language understanding, Nora automatically parses users' O&M requests into structured rules, supports rule generation, modification, saving, management, and invocation, and can coordinate with existing system resources to complete configuration validation tasks. The assistant significantly reduces the complexity for network engineers in writing validation rules, running configuration checks, and maintaining rule assets, improving platform usability and automation.",
+                  text: "Golden Template is a Huawei platform built for intelligent validation and operations of network configurations. It aims to improve configuration inspection efficiency and O&M quality through rule-based and automated methods. I designed and built Nora, an intelligent assistant (Network Orchestration & Rules Agent), for the system. Based on natural language understanding, Nora automatically parses users' O&M requests into structured rules, supports rule generation, modification, saving, management, and invocation, and can coordinate with existing system resources to complete configuration validation tasks. The assistant significantly reduces the complexity for network engineers in writing validation rules, running configuration checks, and maintaining rules, improving platform usability and automation.",
                 },
                 {
                   time: "2026/06 - Present",
-                  title: "LumenIndex: PageIndex-Inspired Open-Source Document QA System",
-                  side: "Technical Focus: Agentic RAG / FastAPI",
-                  text: "Independently designed and open-sourced a self-hostable document retrieval and question-answering system deeply inspired by the open-source PageIndex idea. The system uses a FastAPI backend and a liquid-glass web interface, supporting PDF / DOCX / Markdown multi-document retrieval, persistent chat sessions, user and asset isolation, admin asset management, and Docker Compose deployment. At the indexing layer, it avoids the expensive path of continuously asking LLMs to build TOCs for large documents, and instead uses deterministic strategies such as PDF bookmarks, layout headings, TOC-page detection, page-level chunking, and large-node refinement. LLM structured outputs are validated with Pydantic, while the agent runtime includes ReAct tool budgets, automatic context compaction, offline fallback, recoverable errors, and visible indexing progress, turning vectorless reasoning-based RAG into a deliverable system rather than a demo.",
+                  title: "LumenIndex: PageIndex-Inspired Agentic-RAG Multi-Document Retrieval QA System",
+                  side: "Technical Focus: LLM Agent",
+                  text: "Independently designed and open-sourced a self-hostable multi-document retrieval and question-answering system inspired by the open-source PageIndex idea. The system uses a FastAPI backend and a liquid-glass web interface, supporting PDF / DOCX / Markdown multi-document retrieval, persistent chat sessions, and Docker Compose deployment. At the indexing layer, it avoids the expensive path of continuously asking LLMs to build TOCs for large documents, and instead uses deterministic strategies such as PDF bookmarks, layout headings, TOC-page detection, page-level chunking, and large-node refinement. LLM structured outputs are validated with Pydantic, while the agent runtime introduces ReAct-based deep retrieval, automatic context compaction, offline fallback, recoverable errors, and visible indexing progress, turning vectorless reasoning-based RAG into a deliverable system rather than a demo.",
                   links: [
                     ["GitHub", "https://github.com/JMY2003/pageindex-lumenindex-agentic-rag"],
                   ],
@@ -945,6 +948,7 @@
         document.getElementById("summary").replaceChildren(...data.summary.map((item) => el("span", { text: item })));
         document.getElementById("contact").replaceChildren(...data.contact.map((item) => el("li", { text: item })));
         document.getElementById("emailButton").textContent = data.actions.email;
+        document.getElementById("githubButton").textContent = data.actions.github;
         document.getElementById("downloadButton").textContent = data.actions.viewPdf;
 
         const tabs = document.getElementById("partTabs");
