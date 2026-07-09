@@ -615,7 +615,7 @@
                   time: "2026/06 - 至今",
                   title: "LumenIndex：PageIndex-inspired Agentic-RAG 多文档检索问答系统",
                   side: "方向：LLM Agent",
-                  text: "独立设计并开源了一个基于开源 PageIndex 思路深度优化的自托管多文档检索问答系统。系统后端采用 FastAPI，前端采用 liquid-glass 风格交互，支持 PDF / DOCX / Markdown 多文档检索、持久会话和 Docker Compose 部署。底层实现上放弃了对大文档持续调用 LLM 构建 TOC 的高成本路线，改用 PDF 书签、版面标题、目录页识别、页级切块和大节点细化等确定性索引策略；LLM 结构化输出统一经过 Pydantic 校验，并引入 ReAct 深度检索、上下文自动压缩、离线降级、可恢复错误和索引进度追踪，目标是将无向量、推理式 RAG 做成可交付系统而非 demo。",
+                  text: "独立设计并开源了一个基于开源 PageIndex 思路深度优化的自托管多文档检索问答系统，支持 PDF / DOCX / Markdown 多文档检索、持久会话和 Docker Compose 部署。底层实现上放弃了对大文档持续调用 LLM 构建 TOC 的高成本路线，改用 PDF 书签、版面标题、目录页识别、页级切块和大节点细化等确定性索引策略；LLM 结构化输出统一经过 Pydantic 校验，并引入 ReAct 深度检索、上下文自动压缩、离线降级、可恢复错误和索引进度追踪，目标是将无向量、推理式 RAG 做成可交付系统而非 demo。",
                   links: [
                     ["GitHub", "https://github.com/JMY2003/pageindex-lumenindex-agentic-rag"],
                   ],
@@ -755,7 +755,7 @@
                   time: "2026/06 - Present",
                   title: "LumenIndex: PageIndex-Inspired Agentic-RAG Multi-Document Retrieval QA System",
                   side: "Technical Focus: LLM Agent",
-                  text: "Independently designed and open-sourced a self-hostable multi-document retrieval and question-answering system inspired by the open-source PageIndex idea. The system uses a FastAPI backend and a liquid-glass web interface, supporting PDF / DOCX / Markdown multi-document retrieval, persistent chat sessions, and Docker Compose deployment. At the indexing layer, it avoids the expensive path of continuously asking LLMs to build TOCs for large documents, and instead uses deterministic strategies such as PDF bookmarks, layout headings, TOC-page detection, page-level chunking, and large-node refinement. LLM structured outputs are validated with Pydantic, while the agent runtime introduces ReAct-based deep retrieval, automatic context compaction, offline fallback, recoverable errors, and visible indexing progress, turning vectorless reasoning-based RAG into a deliverable system rather than a demo.",
+                  text: "Independently designed and open-sourced a self-hostable multi-document retrieval and question-answering system inspired by the open-source PageIndex idea, supporting PDF / DOCX / Markdown multi-document retrieval, persistent chat sessions, and Docker Compose deployment. At the indexing layer, it avoids the expensive path of continuously asking LLMs to build TOCs for large documents, and instead uses deterministic strategies such as PDF bookmarks, layout headings, TOC-page detection, page-level chunking, and large-node refinement. LLM structured outputs are validated with Pydantic, while the agent runtime introduces ReAct-based deep retrieval, automatic context compaction, offline fallback, recoverable errors, and visible indexing progress, turning vectorless reasoning-based RAG into a deliverable system rather than a demo.",
                   links: [
                     ["GitHub", "https://github.com/JMY2003/pageindex-lumenindex-agentic-rag"],
                   ],
