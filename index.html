@@ -563,7 +563,7 @@
           toggle: "English",
           name: "姜明烨",
           photoAlt: "姜明烨照片",
-          summary: ["硕士&双学士学位", "LLM Agent & LLM算法"],
+          summary: ["硕士&双学士学位", "LLM Agent"],
           contact: ["男", "在校生", "现居广州", "(+86)15773982990", "mingyejiang@foxmail.com"],
           actions: {
             email: "邮件联系",
@@ -584,7 +584,7 @@
                   lines: [
                     ["学院：", "数学学院"],
                     ["专业：", "应用统计"],
-                    ["专业方向：", "深度学习，大语言模型"],
+                    ["专业方向：", "LLM, AGENT"],
                     ["相关课程：", "人工智能算法选讲；机器学习与数据挖掘；数据分析高级编程；统计推断；回归分析，算法设计..."],
                   ],
                 },
@@ -607,25 +607,31 @@
               title: "项目经历",
               entries: [
                 {
-                  time: "2026/05 - 至今",
-                  title: "Golden Template 网络配置智能校验运维系统",
+                  time: "2026/05 - 2026/09",
+                  title: "华为智能配置审计-网络隐患风险识别系统",
                   side: "方向：LLM Agent",
-                  text: "Golden Template 是华为面向网络配置智能校验与运维场景打造的平台，旨在通过规则化、自动化的方式提升网络配置检查效率与运维质量。本人为系统设计并打造了 Nora 智能助手（Network Orchestration & Rules Agent）。Nora 基于自然语言理解能力，能够将用户的运维诉求自动解析为结构化规则，支持规则的生成、修改、保存、管理与调用，并可联动系统内既有资源完成配置校验任务。该助手显著降低了网络工程师编写校验规则、执行配置检查和维护规则的复杂度，提升了平台的易用性与自动化水平。",
+                  text: "本系统是华为面向网络配置智能审计与校验场景打造的平台，旨在通过规则化、自动化的方式提升网络配置检查效率与运维质量。本人为系统设计并打造了 Nora 智能助手（Network Orchestration & Rules Agent）。Nora 基于自然语言理解能力，能够将用户的运维诉求自动解析为结构化规则，支持规则的生成、修改、保存、管理与调用，并可联动系统内既有资源完成配置校验任务。该助手显著降低了网络工程师编写校验规则、执行配置检查和维护规则资产的复杂度，提升了平台的易用性与自动化水平。本系统已在北京某银行进行配置审计试点穿刺，审计发现用户组网中10余隐患，获得客户认可。",
                 },
                 {
-                  time: "2026/06 - 至今",
+                  time: "2026/03 - 2026/05",
+                  title: "基于Agentic RAG的网络配置翻译与生成系统",
+                  side: "方向：LLM Agent",
+                  text: "作为团队核心成员，为配置翻译与生成场景打造了一套超高准确度的agentic RAG工具，用于华为与思科设备等配置命令手册检索与生成，实测检索准确率超过98%，远高于传统基于embedding的检索（准确度低于90%），目前该系统硬件在Cisco to huawei配置文件翻译，网络配置文件生成，故障注入，网络世界模型等项目中上线应用。",
+                },
+                {
+                  time: "2026/09 - 至今",
+                  title: "基于混合检索技术的网络故障基线智能生成Multi-Agent 系统",
+                  side: "方向：LLM Agent",
+                  text: "面向用于故障注入的网络配置基线生成，设计并实现基于 Multi-Agent 的智能系统。采用Supervisor-Worker架构，构建主 Agent 与 Guideline Retriever、Manual Retriever、Troubleshooter 三个子 Agent，由主 Agent 负责任务规划、子 Agent 的调度及 eNSP 模拟器交互，通过向量 RAG 检索华为配置基线指南（GR），通过 Agentic RAG（项目二的技术）实现命令手册的精准检索（MR），并集成 eNSP 网络模拟器，实现配置基线自动生成、仿真验证与故障诊断。",
+                },
+                {
+                  time: "2026/06 - 2026/08",
                   title: "LumenIndex：PageIndex-inspired Agentic-RAG 多文档检索问答系统",
                   side: "方向：LLM Agent",
                   text: "独立设计并开源了一个基于开源 PageIndex 思路深度优化的自托管多文档检索问答系统，支持 PDF / DOCX / Markdown 多文档检索、持久会话和 Docker Compose 部署。底层实现上放弃了对大文档持续调用 LLM 构建 TOC 的高成本路线，改用 PDF 书签、版面标题、目录页识别、页级切块和大节点细化等确定性索引策略；LLM 结构化输出统一经过 Pydantic 校验，并引入 ReAct 深度检索、上下文自动压缩、离线降级、可恢复错误和索引进度追踪，目标是将无向量、推理式 RAG 做成可交付系统而非 demo。",
                   links: [
                     ["GitHub", "https://github.com/JMY2003/pageindex-lumenindex-agentic-rag"],
                   ],
-                },
-                {
-                  time: "2026/03 - 2026/05",
-                  title: "基于Agentic RAG的网络配置翻译与生成系统",
-                  side: "方向：LLM Agent",
-                  text: "作为团队核心成员，为配置翻译与生成场景打造了一套超高准确度的agentic RAG工具，用于华为与思科设备等配置命令手册检索与生成，实测检索准确率超过98%，远高于传统基于embedding的检索（准确度低于90%，完全无法处理相似的命令），目前该系统硬件在Cisco to huawei配置文件翻译，路由网络配置文件生成，故障注入，网络世界模型等项目中上线应用。",
                 },
                 {
                   time: "2026/03 - 2026/04",
@@ -637,13 +643,13 @@
                   time: "2024/10-2025/6",
                   title: "事件触发通信下的分布式优化研究",
                   side: "方向：优化理论",
-                  text: "重点研究了分布式梯度跟踪方法。针对无向连通网络下的DIGing算法，我提出了一种改进型事件触发机制，得到了一种新的基于事件触发通信的DIGing算法。此算法在强凸目标函数的条件下能够收敛到全局最优解，在理论上避免了既有触发机制参数选择困难等问题，具有参数选择简单易行的优点，且在一定程度上降低了通信负担。 针对有向强连通网络下的场景，我将上述事件触发机制拓展应用到了Push-DIGing算法，设计了一种全新的基于事件触发通信的Push-DIGing算法。此算法在强凸目标函数的条件下能够收敛到全局最优解，且相较于原始的Push-DIGing算法显著降低了通信率。最终我的研究成果获得了华南理工大学优秀毕业论文。",
+                  text: "本人重点研究了分布式梯度跟踪方法。针对无向连通网络下的DIGing算法，我提出了一种改进型事件触发机制，得到了一种新的基于事件触发通信的DIGing算法。此算法在强凸目标函数的条件下能够收敛到全局最优解，在理论上避免了既有触发机制参数选择困难等问题，具有参数选择简单易行的优点，且在一定程度上降低了通信负担。 针对有向强连通网络下的场景，我将上述事件触发机制拓展应用到了Push-DIGing算法，设计了一种全新的基于事件触发通信的Push-DIGing算法。此算法在强凸目标函数的条件下能够收敛到全局最优解，且相较于原始的Push-DIGing算法显著降低了通信率。最终我的研究成果获得了华南理工大学优秀毕业论文。",
                 },
               ],
             },
             {
               id: "work",
-              title: "工作经历",
+              title: "实习经历",
               entries: [
                 {
                   time: "2026/03 - 至今",
@@ -651,7 +657,7 @@
                   side: "职位：AI工程师（agent方向）",
                   paragraphs: [
                     ["公司介绍：", "华为ict bg, 网络孪生仿真实验室，lab主要研究方向为通信网络agent。"],
-                    ["工作内容：", "主要工作内容为研究LLM技术在通信网络中的工程应用，包括但不限于配置翻译，配置生成，智能校验与运维，网络世界模型等领域，目前本人打造的多套LLM Agent已投入使用，效果良好，大大降低了一线网络工程师的工作负荷，提升了工作效率。"],
+                    ["工作内容：", "主要工作内容为研究LLM技术在通信网络中的工程应用，包括但不限于配置翻译，配置生成，智能校验与运维，网络世界模型等领域，目前本人打造的多套LLM Agent已投入使用，效果良好，降低了一线网络工程师的工作负荷，提升了工作效率。目前已获得公司优秀实习生。"],
                   ],
                 },
                 {
@@ -686,7 +692,7 @@
             },
             {
               id: "awards",
-              title: "获奖记录",
+              title: "获奖与荣誉",
               awards: [
                 "2024 MCM（美国大学生数学建模竞赛）: Finalist (全球前2%)",
                 "2025 华南理工大学校级优秀毕业论文（全校1%）",
@@ -704,7 +710,7 @@
           toggle: "简体中文",
           name: "Mingye JIANG",
           photoAlt: "Portrait of Mingye JIANG",
-          summary: ["Master's & Dual Bachelor's Degrees", "LLM Agent & LLM Algorithms"],
+          summary: ["Master's & Dual Bachelor's Degrees", "LLM Agent"],
           contact: ["Male", "Current Postgraduate Student", "Guangzhou, China", "(+86)15773982990", "mingyejiang@foxmail.com"],
           actions: {
             email: "Email",
@@ -725,7 +731,7 @@
                   lines: [
                     ["School: ", "School of Mathematics"],
                     ["Major: ", "Applied Statistics"],
-                    ["Academic Focus: ", "Deep Learning, Large Language Models"],
+                    ["Academic Focus: ", "Large Language Models (LLMs), AI Agents"],
                     ["Relevant Courses: ", "Selected Topics in Artificial Intelligence Algorithms; Machine Learning and Data Mining; Advanced Programming for Data Analysis; Statistical Inference; Regression Analysis; Algorithm Design..."],
                   ],
                 },
@@ -748,25 +754,31 @@
               title: "Project Experience",
               entries: [
                 {
-                  time: "2026/05 - Present",
-                  title: "Golden Template Intelligent Network Configuration Validation and O&M System",
+                  time: "2026/05 - 2026/09",
+                  title: "Huawei Intelligent Configuration Audit and Network Risk Identification System",
                   side: "Technical Focus: LLM Agent",
-                  text: "Golden Template is a Huawei platform built for intelligent validation and operations of network configurations. It aims to improve configuration inspection efficiency and O&M quality through rule-based and automated methods. I designed and built Nora, an intelligent assistant (Network Orchestration & Rules Agent), for the system. Based on natural language understanding, Nora automatically parses users' O&M requests into structured rules, supports rule generation, modification, saving, management, and invocation, and can coordinate with existing system resources to complete configuration validation tasks. The assistant significantly reduces the complexity for network engineers in writing validation rules, running configuration checks, and maintaining rules, improving platform usability and automation.",
+                  text: "This Huawei platform supports intelligent network configuration auditing and validation, using rules and automation to improve inspection efficiency and operations quality. I designed and built Nora (Network Orchestration & Rules Agent), an intelligent assistant that turns natural-language operations requests into structured rules. It supports rule creation, modification, storage, management, and execution, and coordinates with existing system resources to validate configurations. Nora reduces the work required of network engineers to write validation rules, run configuration checks, and maintain rule assets. The system was piloted in a configuration audit for a bank in Beijing, where it identified more than ten risks in the customer's network and received positive feedback.",
                 },
                 {
-                  time: "2026/06 - Present",
+                  time: "2026/03 - 2026/05",
+                  title: "Network Configuration Translation and Generation System Based on Agentic RAG",
+                  side: "Technical Focus: LLM Agent",
+                  text: "As a core team member, I built a high-accuracy Agentic RAG tool for configuration translation and generation using Huawei and Cisco device command manuals. Measured retrieval accuracy exceeded 98%, compared with less than 90% for conventional embedding-based retrieval. The system has been deployed in Cisco-to-Huawei configuration file translation, network configuration generation, fault injection, and network world model projects.",
+                },
+                {
+                  time: "2026/09 - Present",
+                  title: "Multi-Agent System for Network Fault Baseline Generation with Hybrid Retrieval",
+                  side: "Technical Focus: LLM Agent",
+                  text: "I designed and implemented a multi-agent system to generate network configuration baselines for fault injection. A Supervisor-Worker architecture connects a lead agent with three specialized agents: Guideline Retriever, Manual Retriever, and Troubleshooter. The lead agent plans tasks, coordinates the agents, and interacts with an eNSP simulator. Vector-based RAG retrieves Huawei configuration baseline guidelines (GR), while the Agentic RAG approach from the preceding configuration translation project retrieves command manuals (MR). The system integrates eNSP to generate configuration baselines, validate them in simulation, and diagnose faults.",
+                },
+                {
+                  time: "2026/06 - 2026/08",
                   title: "LumenIndex: PageIndex-Inspired Agentic-RAG Multi-Document Retrieval QA System",
                   side: "Technical Focus: LLM Agent",
                   text: "Independently designed and open-sourced a self-hostable multi-document retrieval and question-answering system inspired by the open-source PageIndex idea, supporting PDF / DOCX / Markdown multi-document retrieval, persistent chat sessions, and Docker Compose deployment. At the indexing layer, it avoids the expensive path of continuously asking LLMs to build TOCs for large documents, and instead uses deterministic strategies such as PDF bookmarks, layout headings, TOC-page detection, page-level chunking, and large-node refinement. LLM structured outputs are validated with Pydantic, while the agent runtime introduces ReAct-based deep retrieval, automatic context compaction, offline fallback, recoverable errors, and visible indexing progress, turning vectorless reasoning-based RAG into a deliverable system rather than a demo.",
                   links: [
                     ["GitHub", "https://github.com/JMY2003/pageindex-lumenindex-agentic-rag"],
                   ],
-                },
-                {
-                  time: "2026/03 - 2026/05",
-                  title: "Network Configuration Translation and Generation System Based on Agentic RAG",
-                  side: "Technical Focus: LLM Agent",
-                  text: "As a core team member, I built a high-accuracy Agentic RAG tool for configuration translation and generation scenarios, supporting retrieval and generation over Huawei and Cisco device command manuals. In tests, the retrieval accuracy exceeded 98%, much higher than traditional embedding-based retrieval (below 90% and unable to handle similar commands). The system has been deployed in projects including Cisco-to-Huawei configuration file translation, routing network configuration generation, fault injection, and network world models.",
                 },
                 {
                   time: "2026/03 - 2026/04",
@@ -784,7 +796,7 @@
             },
             {
               id: "work",
-              title: "Work Experience",
+              title: "Internship Experience",
               entries: [
                 {
                   time: "2026/03 - Present",
@@ -792,7 +804,7 @@
                   side: "Position: AI Engineer (LLM Agent Focus)",
                   paragraphs: [
                     ["Organization: ", "ICT Business Group (ICT BG), Network Digital Twin Simulation Laboratory, with a primary research focus on communication network agents."],
-                    ["Responsibilities: ", "Focused on engineering applications of LLM technologies in communication networks, including configuration translation, configuration generation, intelligent validation and O&M, and network world models. Multiple LLM agents I built have been deployed and have performed well, substantially reducing field network engineers' workload and improving operational efficiency."],
+                    ["Responsibilities: ", "Focused on engineering applications of LLM technologies in communication networks, including configuration translation, configuration generation, intelligent validation and O&M, and network world models. Multiple LLM agents I built have been deployed and have performed well, reducing field network engineers' workload and improving operational efficiency. The company named me an Outstanding Intern."],
                   ],
                 },
                 {
@@ -827,7 +839,7 @@
             },
             {
               id: "awards",
-              title: "Awards",
+              title: "Awards and Honors",
               awards: [
                 "2024 MCM (Mathematical Contest in Modeling): Finalist (global top 2%)",
                 "2025 Outstanding Undergraduate Thesis, South China University of Technology (university-wide top 1%)",
